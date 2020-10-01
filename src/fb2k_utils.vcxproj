@@ -35,6 +35,7 @@
     <Import Project="$(ProjectDir)..\props\local\submodules.props" />
     <Import Project="$(ProjectDir)..\props\submodules\fmt.props" />
     <Import Project="$(ProjectDir)..\props\submodules\foobar2000_sdk.props" />
+    <Import Project="$(ProjectDir)..\props\submodules\json.props" />
     <Import Project="$(ProjectDir)..\props\submodules\range.props" />
     <Import Project="$(ProjectDir)..\props\submodules\pfc.props" />
     <Import Project="$(ProjectDir)..\props\submodules\span.props" />
@@ -94,6 +95,7 @@
   </ImportGroup>
   <ItemGroup>
     <ClCompile Include="qwr\abort_callback.cpp" />
+    <ClCompile Include="qwr\acfu_integration.cpp" />
     <ClCompile Include="qwr\fbk2_paths.cpp" />
     <ClCompile Include="qwr\delayed_executor.cpp" />
     <ClCompile Include="qwr\error_popup.cpp" />
@@ -101,6 +103,7 @@
     <ClCompile Include="qwr\hook_handler.cpp" />
     <ClCompile Include="qwr\pfc_helpers_stream.cpp" />
     <ClCompile Include="qwr\qwr_exception.cpp" />
+    <ClCompile Include="qwr\semantic_version.cpp" />
     <ClCompile Include="qwr\string_helpers.cpp" />
     <ClCompile Include="qwr\text_helpers.cpp" />
     <ClCompile Include="qwr\thread_helpers.cpp" />
@@ -113,6 +116,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="qwr\abort_callback.h" />
+    <ClInclude Include="qwr\acfu_github.h" />
+    <ClInclude Include="qwr\acfu_integration.h" />
     <ClInclude Include="qwr\fbk2_paths.h" />
     <ClInclude Include="qwr\delayed_executor.h" />
     <ClInclude Include="qwr\error_popup.h" />
@@ -123,6 +128,7 @@
     <ClInclude Include="qwr\pfc_helpers_stream.h" />
     <ClInclude Include="qwr\pfc_helpers_ui.h" />
     <ClInclude Include="qwr\qwr_exception.h" />
+    <ClInclude Include="qwr\semantic_version.h" />
     <ClInclude Include="qwr\string_helpers.h" />
     <ClInclude Include="qwr\text_helpers.h" />
     <ClInclude Include="qwr\thread_helpers.h" />
