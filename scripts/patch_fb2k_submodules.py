@@ -5,9 +5,10 @@ from pathlib import Path
 
 import call_wrapper
 
-def patch():
+def patch(root_dir):
     cur_dir = Path(__file__).parent.absolute()
-    root_dir = cur_dir.parent
+    if not root_dir:
+        root_dir = cur_dir.parent
     patches = [cur_dir/"patches"/p for p in ["foobar2000.patch", "pfc.patch"]]
     for p in patches:
         assert(p.exists() and p.is_file())

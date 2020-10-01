@@ -16,9 +16,10 @@ def update_submodule(root_dir, submodule_name):
         subprocess.check_call("git fetch --all", cwd=submodule_path, shell=True)
         subprocess.check_call(f"git submodule update --init --force --recursive --remote -- submodules/{submodule_name}", cwd=root_dir, shell=True)
 
-def update():
-    cur_dir = Path(__file__).parent.absolute()
-    root_dir = cur_dir.parent
+def update(root_dir):
+    if not root_dir:
+        cur_dir = Path(__file__).parent.absolute()
+        root_dir = cur_dir.parent
 
     subprocess.check_call("git submodule sync", cwd=root_dir, shell=True)
 

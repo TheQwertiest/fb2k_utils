@@ -20,9 +20,10 @@ def download_submodule(root_dir, submodule_name):
             subprocess.check_call(f"git submodule deinit --force -- submodules/{submodule_name}", cwd=root_dir, shell=True)
             subprocess.check_call(f"git submodule update --init --force -- submodules/{submodule_name}", cwd=root_dir, shell=True)
 
-def download():
-    cur_dir = Path(__file__).parent.absolute()
-    root_dir = cur_dir.parent
+def download(root_dir):
+    if not root_dir:
+        cur_dir = Path(__file__).parent.absolute()
+        root_dir = cur_dir.parent
 
     subprocess.check_call("git submodule sync", cwd=root_dir, shell=True)
     subprocess.check_call("git submodule foreach git reset --hard", cwd=root_dir, shell=True)

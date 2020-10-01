@@ -13,7 +13,7 @@ PathLike = Union[str, Path]
 
 def generate_config_custom( base_dir: PathLike,
                             output_dir: PathLike,
-                            repo: str = "theqwertiest/foo_spotify_input",
+                            repo: str,
                             commit_hash: str = ""):
     if (not commit_hash):
         commit_hash = subprocess.check_output("git rev-parse --short HEAD", shell=True).decode('ascii').strip()
@@ -35,13 +35,6 @@ def generate_config_custom( base_dir: PathLike,
 
     print(f"Generated file: {output_file}")
 
-def generate_config():
-    cur_dir = Path(__file__).parent.absolute()
-    root_dir = cur_dir.parent
-    output_dir = root_dir/"_result"/"AllPlatforms"/"generated"
-
-    generate_config_custom(root_dir, output_dir)
-
 if __name__ == '__main__':
     cur_dir = Path(__file__).parent.absolute()
     root_dir = cur_dir.parent
@@ -50,7 +43,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate source link configuration file')
     parser.add_argument('--base_dir', default=root_dir)
     parser.add_argument('--output_dir', default=output_dir)
-    parser.add_argument('--repo', default="theqwertiest/foo_spotify_input")
+    parser.add_argument('--repo')
     parser.add_argument('--commit_hash', default="")
 
     args = parser.parse_args()
