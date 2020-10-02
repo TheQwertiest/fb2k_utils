@@ -30,7 +30,7 @@ private:
 class TimedAbortCallback : public abort_callback
 {
 public:
-    TimedAbortCallback( uint32_t timeoutSeconds = 5 );
+    TimedAbortCallback( const std::string& timeoutLogMessage = "",  uint32_t timeoutSeconds = 5 );
     TimedAbortCallback( const TimedAbortCallback& ) = delete;
     ~TimedAbortCallback();
     TimedAbortCallback& operator=( const TimedAbortCallback& ) = delete;
@@ -39,9 +39,11 @@ public:
     bool is_aborting() const override;
     abort_callback_event get_abort_event() const override;
 
-    static VOID CALLBACK timerProc( PVOID lpParameter, BOOLEAN /*TimerOrWaitFired*/ );
+    static void CALLBACK timerProc( PVOID lpParameter, BOOLEAN /*TimerOrWaitFired*/ );
 
 private:
+    const std::string timeoutLogMessage_;
+    
     pfc::event abortEvent_;
     HANDLE hTimer_ = nullptr;
 

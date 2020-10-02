@@ -11,7 +11,7 @@ void ReportErrorWithPopup( const std::string& title, const std::string& errorTex
 {
     assert( core_api::assert_main_thread() );
 
-    FB2K_console_formatter() << errorText;
+    FB2K_console_formatter() << title << ":\n" << errorText;
     qwr::DelayedExecutor::GetInstance().AddTask( [errorText, title] {
         popup_message::g_show( errorText.c_str(), title.c_str() );
     } );
