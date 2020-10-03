@@ -7,11 +7,12 @@ import semver
 import subprocess
 import shutil
 import tempfile
+import time
 from pathlib import Path
 from typing import Union
 
 import call_wrapper
-import generate_changelog
+import update_changelog
 
 PathLike = Union[str, Path]
 
@@ -28,9 +29,22 @@ def get_cwd_repo_root():
     root = subprocess.check_output(cmd_get_root, text=True, env=os.environ, cwd=repo_dir).strip()
     return Path(root)
 
-def git_push_new_version(repo_dir: PathLike,
-                         version_file: PathLike,
-                         release_version):
+def git_add_new_changelog(repo_dir: PathLike,
+                          release_version):
+    changelog = update_changelog.update(root_dir=repo_dir, new_version=release_version, silent=True)
+    cmd_git_add = [
+        'git',
+        'add',
+        'CHANGELOG.md'
+    ]
+    print('> ' + ' '.join(cmd_git_add))
+    subprocess.check_call(cmd_git_add, env=os.environ, cwd=repo_dir)
+
+    return changelog
+
+def git_add_new_version(repo_dir: PathLike,
+                        version_file: PathLike,
+                        release_version):
     version = ''
     with open(version_file, 'r') as input:
         version = input.read().strip()
@@ -49,6 +63,8 @@ def git_push_new_version(repo_dir: PathLike,
     print('> ' + ' '.join(cmd_git_add))
     subprocess.check_call(cmd_git_add, env=os.environ, cwd=repo_dir)
 
+def git_commit_and_push_new_files(repo_dir: PathLike,
+                                  release_version):
     cmd_git_commit = [
         'git',
         'commit',
@@ -89,8 +105,9 @@ def git_commit_new_beta_version(repo_dir: PathLike,
     subprocess.check_call(cmd_git_commit, env=os.environ, cwd=repo_dir)
 
 def git_publish_release(repo_dir: PathLike,
-                        release_version):
-    changelog = generate_changelog.generate(repo_dir, output=False)
+                        release_version,
+                        changelog):
+    changelog = '# Changelog\n\n' + changelog
 
     temp_dir = ''
     try:
@@ -122,8 +139,13 @@ def publish(repo_dir: PathLike,
     if not version_file.exists():
         raise ValueError('Repo is missing VERSION file')
 
-    git_push_new_version(repo_dir, version_file, release_version)
-    git_publish_release(repo_dir, release_version)
+    git_add_new_version(repo_dir, version_file, release_version)
+    changelog = git_add_new_changelog(repo_dir, release_version)
+    git_commit_and_push_new_files(repo_dir, release_version)
+    # Sleep to avoid build conflicts
+    print('Sleeping for a bit...')
+    time.sleep(5)
+    git_publish_release(repo_dir, release_version, changelog)
     git_commit_new_beta_version(repo_dir, version_file, parsed_ver)
 
 if __name__ == '__main__':

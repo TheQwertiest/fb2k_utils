@@ -35,9 +35,16 @@ def close(repo_dir: PathLike):
             'gh',
             'api',
             f'/repos/:owner/:repo/issues/{str(issue_number)}/labels/fixed%20in%20nightly',
-            '--method=DELETE']
+            '--method=DELETE',
+            '--silent']
     def get_cmd_close_issue(issue_number):
-        return ['gh', 'issue', 'close', str(issue_number)]
+        return [
+            'gh',
+            'api',
+            f'/repos/:owner/:repo/issues/{str(issue_number)}',
+            '--method=PATCH',
+            '-Fstate=close',
+            '--silent']
 
     for i in issues:
         cmd_close_issue = get_cmd_close_issue(i['number'])

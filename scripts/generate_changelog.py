@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 import subprocess
+import re
 from pathlib import Path
 from typing import Union
 
@@ -11,9 +12,22 @@ import call_wrapper
 
 PathLike = Union[str, Path]
 
+def get_current_repo(root_dir: PathLike):
+    cmd_git_get_remote = [
+        'git',
+        'config',
+        '--get',
+        'remote.origin.url'
+    ]
+    print('> ' + ' '.join(cmd_git_get_remote))
+    url = subprocess.check_output(cmd_git_get_remote, text=True, env=os.environ, cwd=root_dir)
+    return url.replace('.git', '').strip()
+
 def generate(repo_dir: PathLike, output=True):
     if not repo_dir:
         repo_dir = Path(os.getcwd()).absolute()
+        
+    repo = get_current_repo(repo_dir)
 
     cmd_list_issues = ' '.join([
         'gh',
@@ -39,7 +53,7 @@ def generate(repo_dir: PathLike, output=True):
     fixed_enhancements = [i for i in issues if has_label(i['labels'], 'enhancement')]
     fixed_bugs = [i for i in issues if has_label(i['labels'], 'bug')]
 
-    changelog = '# Changelog\n\n'
+    changelog = ''
     if fixed_enhancements:
         changelog += '### Added\n'
         for i in fixed_enhancements:
@@ -50,6 +64,12 @@ def generate(repo_dir: PathLike, output=True):
         for i in fixed_bugs:
             changelog += f'- {i["title"]} (#{i["number"]})\n'
         changelog += '\n'
+
+    changelog = re.sub(
+        r'#([0-9]+)',
+        '[' + r'#\1' + ']' + f'({repo}/issues/' + r'\1' + ')',
+        changelog
+    )
 
     if output:
         print(changelog)
