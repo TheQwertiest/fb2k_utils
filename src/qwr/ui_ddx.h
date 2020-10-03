@@ -1,5 +1,7 @@
 #pragma once
 
+#include <qwr/pfc_helpers_ui.h>
+
 #include <nonstd/span.hpp>
 
 namespace qwr::ui
@@ -104,7 +106,7 @@ public:
             return;
         }
 
-        value_ = smp::pfc_x::uGetDlgItemText<char8_t>( hWnd_, controlId_ );
+        value_ = qwr::pfc_x::uGetDlgItemText<char8_t>( hWnd_, controlId_ );
     }
     void WriteToUi() override
     {

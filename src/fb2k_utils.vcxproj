@@ -96,6 +96,7 @@
   <ItemGroup>
     <ClCompile Include="qwr\abort_callback.cpp" />
     <ClCompile Include="qwr\acfu_integration.cpp" />
+    <ClCompile Include="qwr\fb2k_helpers_adv_config.cpp" />
     <ClCompile Include="qwr\fbk2_paths.cpp" />
     <ClCompile Include="qwr\delayed_executor.cpp" />
     <ClCompile Include="qwr\error_popup.cpp" />
@@ -118,12 +119,15 @@
     <ClInclude Include="qwr\abort_callback.h" />
     <ClInclude Include="qwr\acfu_github.h" />
     <ClInclude Include="qwr\acfu_integration.h" />
+    <ClInclude Include="qwr\fb2k_helpers_adv_config.h" />
     <ClInclude Include="qwr\fbk2_paths.h" />
     <ClInclude Include="qwr\delayed_executor.h" />
     <ClInclude Include="qwr\error_popup.h" />
     <ClInclude Include="qwr\file_helpers.h" />
     <ClInclude Include="qwr\final_action.h" />
     <ClInclude Include="qwr\hook_handler.h" />
+    <ClInclude Include="qwr\ui_option.h" />
+    <ClInclude Include="qwr\fb2k_helpers_config.h" />
     <ClInclude Include="qwr\pfc_helpers_cnt.h" />
     <ClInclude Include="qwr\pfc_helpers_stream.h" />
     <ClInclude Include="qwr\pfc_helpers_ui.h" />
@@ -133,6 +137,7 @@
     <ClInclude Include="qwr\text_helpers.h" />
     <ClInclude Include="qwr\thread_helpers.h" />
     <ClInclude Include="qwr\ui_ddx.h" />
+    <ClInclude Include="qwr\ui_ddx_option.h" />
     <ClInclude Include="qwr\unicode.h" />
     <ClInclude Include="qwr\winapi_error_helpers.h" />
     <ClInclude Include="stdafx.h" />
