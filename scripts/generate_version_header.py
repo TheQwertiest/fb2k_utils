@@ -56,9 +56,9 @@ def generate_header_custom( repo_dir: PathLike,
         output.write(f"#define {component_prefix}_VERSION_MINOR {version.minor}\n")
         output.write(f"#define {component_prefix}_VERSION_PATCH {version.patch}\n")
         if version.prerelease:
-            output.write(f"#define {component_prefix}_PRERELEASE_TEXT {version.prerelease}\n")
+            output.write(f'#define {component_prefix}_PRERELEASE_TEXT "{version.prerelease}"\n')
         else:
-            output.write(f"// #define {component_prefix}_PRERELEASE_TEXT placeholder\n")
+            output.write(f'// #define {component_prefix}_PRERELEASE_TEXT "placeholder"\n')
 
     print(f"Generated file: {output_file}")
 
