@@ -1,9 +1,23 @@
 #!/usr/bin/env python3
 
 import subprocess
+import os
 from pathlib import Path
 
 import call_wrapper
+
+def get_cwd_repo_root():
+    repo_dir = Path(os.getcwd()).absolute()
+    cmd_get_root = [
+        'git',
+        '-C',
+        str(repo_dir),
+        'rev-parse',
+        '--show-toplevel'
+    ]
+
+    root = subprocess.check_output(cmd_get_root, text=True, env=os.environ, cwd=repo_dir).strip()
+    return Path(root)
 
 def update_submodule(root_dir, submodule_name):
     print(f"Updating {submodule_name}...")
@@ -16,10 +30,9 @@ def update_submodule(root_dir, submodule_name):
         subprocess.check_call("git fetch --all", cwd=submodule_path, shell=True)
         subprocess.check_call(f"git submodule update --init --force --recursive --remote -- submodules/{submodule_name}", cwd=root_dir, shell=True)
 
-def update(root_dir):
+def update(root_dir=None):
     if not root_dir:
-        cur_dir = Path(__file__).parent.absolute()
-        root_dir = cur_dir.parent
+        root_dir = get_cwd_repo_root()
 
     subprocess.check_call("git submodule sync", cwd=root_dir, shell=True)
 
