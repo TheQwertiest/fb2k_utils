@@ -115,7 +115,18 @@ public:
             return;
         }
 
-        uSetDlgItemText( hWnd_, controlId_, static_cast<std::u8string>( value_ ).c_str() );
+        const auto& value = [&] {
+            if constexpr ( std::is_convertible_v<decltype( value_ ), pfc::string8_fast> )
+            {
+                return std::u8string( static_cast<pfc::string8_fast>( value_ ).c_str() );
+            }
+            else
+            {
+                return static_cast<std::u8string>( value_ );
+            }
+        }();
+
+        uSetDlgItemText( hWnd_, controlId_, value.c_str() );
     }
 
 private:
@@ -131,13 +142,14 @@ class UiDdx_RadioRange final
 public:
     using value_type = typename T;
 
+    static_assert( std::is_convertible_v<T, int> );
+    static_assert( std::is_assignable_v<T&, int> );
+
 public:
     UiDdx_RadioRange( T& value, nonstd::span<const int> controlIdList )
         : value_( value )
         , controlIdList_( controlIdList.begin(), controlIdList.end() )
     {
-        static_assert( std::is_convertible_v<T, int> );
-        static_assert( std::is_assignable_v<T&, int> );
     }
     ~UiDdx_RadioRange() override = default;
 

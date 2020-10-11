@@ -1,6 +1,6 @@
 #include <stdafx.h>
 
-#include "fb2k_helpers_config.h"
+#include "fb2k_config.h"
 
 namespace qwr::fb2k::config
 {

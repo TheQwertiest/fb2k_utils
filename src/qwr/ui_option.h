@@ -1,23 +1,6 @@
 #pragma once
 
 #include <type_traits>
-#include <variant>
-
-namespace qwr::internal
-{
-
-// TODO: move
-template <typename, template <typename...> class>
-inline constexpr bool isSpecializationOfV = false;
-
-template <template <typename...> class T, typename... Args>
-inline constexpr bool isSpecializationOfV<T<Args...>, T> = true;
-
-// variant passes the check for equality for some reason
-template <typename T>
-inline constexpr bool isComparableV = !qwr::internal::isSpecializationOfV<T, std::variant> && std::is_invocable_r_v<bool, std::equal_to<>, T, T>;
-
-} // namespace qwr::internal
 
 namespace qwr::ui
 {
@@ -34,7 +17,7 @@ public:
     virtual void ResetToDefault() = 0;
 };
 
-template <typename T>
+template <typename T, typename = void>
 class UiOption
     : public IUiOption
 {
@@ -84,15 +67,7 @@ public:
 
     void SetValue( const value_type& value, bool dontCheck = false )
     {
-        if constexpr ( qwr::internal::isComparableV<value_type> )
-        {
-            hasChanged_ = ( dontCheck ? true : ( savedValue_ != value ) );
-        }
-        else
-        {
-            hasChanged_ = true;
-        }
-
+        hasChanged_ = ( dontCheck ? true : ( savedValue_ != value ) );
         curValue_ = value;
     }
 
@@ -134,5 +109,8 @@ private:
     value_type savedValue_{};
     value_type curValue_{};
 };
+
+template <typename... Ts>
+using UiOptionTuple = std::tuple<UiOption<Ts>...>;
 
 } // namespace qwr::ui
