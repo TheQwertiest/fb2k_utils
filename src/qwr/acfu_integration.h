@@ -26,4 +26,4 @@ private:
     std::string installedVersion_;
 };
 
-} // namespace qwr
+} // namespace qwr::acfu

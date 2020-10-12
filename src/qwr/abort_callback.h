@@ -1,8 +1,8 @@
 #pragma once
 
+#include <atomic>
 #include <mutex>
 #include <unordered_map>
-#include <atomic>
 
 namespace qwr
 {
@@ -30,7 +30,7 @@ private:
 class TimedAbortCallback : public abort_callback
 {
 public:
-    TimedAbortCallback( const std::string& timeoutLogMessage = "",  uint32_t timeoutSeconds = 5 );
+    TimedAbortCallback( const std::string& timeoutLogMessage = "", uint32_t timeoutSeconds = 5 );
     TimedAbortCallback( const TimedAbortCallback& ) = delete;
     ~TimedAbortCallback();
     TimedAbortCallback& operator=( const TimedAbortCallback& ) = delete;
@@ -43,7 +43,7 @@ public:
 
 private:
     const std::string timeoutLogMessage_;
-    
+
     pfc::event abortEvent_;
     HANDLE hTimer_ = nullptr;
 

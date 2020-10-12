@@ -13,7 +13,7 @@ public:
     cfg_std_string& operator=( const cfg_std_string& p_val );
     cfg_std_string& operator=( std::u8string_view p_val );
 
-    operator const std::u8string&() const;
+    operator const std::u8string &() const;
 
 protected:
     // cfg_var
@@ -29,4 +29,4 @@ bool operator!=( std::u8string_view left, const cfg_std_string& right );
 bool operator==( const cfg_std_string& left, std::u8string_view right );
 bool operator==( std::u8string_view left, const cfg_std_string& right );
 
-} // namespace drp::pfc_x
+} // namespace qwr::pfc_x

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <qwr/fb2k_config.h>
-#include <qwr/ui_option.h>
 #include <qwr/type_traits.h>
+#include <qwr/ui_option.h>
 
 #include <unordered_map>
 
@@ -15,7 +15,7 @@ namespace ui
 template <typename T>
 class UiOption<T,
                std::enable_if_t<
-                   ( qwr::isSpecializationOfV<T, fb2k::Config> || qwr::isSpecializationOfV < T, fb2k::Config_MT> ) && !std::is_enum_v<typename T::value_type>>>
+                   (qwr::isSpecializationOfV<T, fb2k::Config> || qwr::isSpecializationOfV<T, fb2k::Config_MT>)&&!std::is_enum_v<typename T::value_type>>>
     : public IUiOption
 {
 public:
@@ -55,7 +55,7 @@ public:
     void SetValue( const value_type& value )
     {
         curValue_ = value;
-        hasChanged_ = ( static_cast<value_type>( config_) != value );
+        hasChanged_ = ( static_cast<value_type>( config_ ) != value );
     }
 
     // > IOptionWrap
@@ -148,12 +148,12 @@ public:
     void SetValue( const value_type& value )
     {
         curValue_ = value;
-        hasChanged_ =( static_cast<enum_type>( config_ ) != id_to_enum_.at(value));
+        hasChanged_ = ( static_cast<enum_type>( config_ ) != id_to_enum_.at( value ) );
     }
 
     void SetValue( const enum_type& value )
     {
-        SetValue( enum_to_id_.at( value ));
+        SetValue( enum_to_id_.at( value ) );
     }
 
     // > IOptionWrap
@@ -176,14 +176,14 @@ public:
     {
         if ( hasChanged_ )
         {
-            curValue_ = enum_to_id_.at(static_cast<enum_type>( config_ ));
+            curValue_ = enum_to_id_.at( static_cast<enum_type>( config_ ) );
             hasChanged_ = false;
         }
     }
 
     void ResetToDefault() override
     {
-        SetValue( static_cast<value_type>( config_.GetDefaultValue()) );
+        SetValue( static_cast<value_type>( config_.GetDefaultValue() ) );
     }
 
 private:

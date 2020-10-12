@@ -9,4 +9,4 @@ std::filesystem::path Component();
 std::filesystem::path Foobar2000();
 std::filesystem::path Profile();
 
-} // namespace qwr
+} // namespace qwr::path

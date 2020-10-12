@@ -59,8 +59,8 @@ public:
     using value_type = typename EnumType;
 
     Config( const GUID& guid, const EnumType& defaultValue )
-        : config_( guid, static_cast<UnderlyingT>( defaultValue) )
-        , defaultValue_(  static_cast<UnderlyingT>(defaultValue) )
+        : config_( guid, static_cast<UnderlyingT>( defaultValue ) )
+        , defaultValue_( static_cast<UnderlyingT>( defaultValue ) )
     {
     }
     ~Config() = default;
@@ -69,14 +69,14 @@ public:
 
     template <typename ArgT, std::enable_if_t<std::is_convertible_v<ArgT, EnumType>, int> = 0>
     Config& operator=( const ArgT& value )
-    {        
+    {
         config_ = static_cast<UnderlyingT>( value );
         return *this;
     }
 
     operator EnumType() const
     {
-        return static_cast<EnumType>(static_cast<UnderlyingT>(config_));
+        return static_cast<EnumType>( static_cast<UnderlyingT>( config_ ) );
     }
 
     const EnumType GetDefaultValue() const
@@ -129,7 +129,7 @@ public:
         return config_;
     }
 
-    const InnerT& GetDefaultValue() const
+    const InnerT GetDefaultValue() const
     {
         return config_.GetDefaultValue();
     }
@@ -151,4 +151,4 @@ using ConfigUint8_MT = Config_MT<cfg_int_t<uint8_t>, uint8_t>;
 template <typename T>
 using ConfigUint8Enum_MT = Config_MT<cfg_int_t<uint8_t>, T>;
 
-} // namespace qwr
+} // namespace qwr::fb2k
