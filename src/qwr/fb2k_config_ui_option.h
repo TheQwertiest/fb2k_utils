@@ -4,6 +4,8 @@
 #include <qwr/ui_option.h>
 #include <qwr/type_traits.h>
 
+#include <unordered_map>
+
 namespace qwr
 {
 
@@ -101,13 +103,18 @@ class UiOption<T,
 public:
     using config_type = typename T;
     using enum_type = typename T::value_type;
-    using value_type = std::underlying_type_t<typename enum_type>;
+    using value_type = int;
 
 public:
-    UiOption( config_type& config )
+    UiOption( config_type& config, const std::unordered_map<enum_type, int>& enum_to_id )
         : config_( config )
-        , curValue_( static_cast<value_type>( static_cast<enum_type>( config ) ) )
+        , curValue_( enum_to_id.at( static_cast<enum_type>( config ) ) )
+        , enum_to_id_( enum_to_id )
     {
+        for ( const auto [e, i]: enum_to_id_ )
+        {
+            id_to_enum_.try_emplace( i, e );
+        }
     }
 
     UiOption( const UiOption& ) = delete;
@@ -133,10 +140,20 @@ public:
         return curValue_;
     }
 
+    const enum_type& GetCurrentEnum() const
+    {
+        return id_to_enum_.at( curValue_ );
+    }
+
     void SetValue( const value_type& value )
     {
         curValue_ = value;
-        hasChanged_ = ( static_cast<value_type>(static_cast<enum_type>( config_ )) != value );
+        hasChanged_ =( static_cast<enum_type>( config_ ) != id_to_enum_.at(value));
+    }
+
+    void SetValue( const enum_type& value )
+    {
+        SetValue( enum_to_id_.at( value ));
     }
 
     // > IOptionWrap
@@ -150,7 +167,7 @@ public:
     {
         if ( hasChanged_ )
         {
-            config_ = static_cast<enum_type>(curValue_);
+            config_ = id_to_enum_.at( curValue_ );
             hasChanged_ = false;
         }
     }
@@ -159,7 +176,7 @@ public:
     {
         if ( hasChanged_ )
         {
-            curValue_ = static_cast<value_type>(static_cast<enum_type>( config_ ));
+            curValue_ = enum_to_id_.at(static_cast<enum_type>( config_ ));
             hasChanged_ = false;
         }
     }
@@ -173,6 +190,9 @@ private:
     config_type& config_;
     value_type curValue_{};
     bool hasChanged_ = false;
+
+    std::unordered_map<enum_type, int> enum_to_id_;
+    std::unordered_map<int, enum_type> id_to_enum_;
 };
 
 } // namespace ui

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <type_traits>
+#include <tuple>
 
 namespace qwr::ui
 {
@@ -25,9 +26,7 @@ public:
     using value_type = typename T;
 
 public:
-    UiOption()
-    {
-    }
+    UiOption() = default;
 
     UiOption( const value_type& value, const value_type& defaultValue )
     {
@@ -109,8 +108,5 @@ private:
     value_type savedValue_{};
     value_type curValue_{};
 };
-
-template <typename... Ts>
-using UiOptionTuple = std::tuple<UiOption<Ts>...>;
 
 } // namespace qwr::ui
