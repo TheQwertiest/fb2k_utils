@@ -15,7 +15,7 @@ namespace ui
 template <typename T>
 class UiOption<T,
                std::enable_if_t<
-                   (qwr::isSpecializationOfV<T, fb2k::Config> || qwr::isSpecializationOfV<T, fb2k::Config_MT>)&&!std::is_enum_v<typename T::value_type>>>
+                   (qwr::is_specialization_of_v<T, fb2k::Config> || qwr::is_specialization_of_v<T, fb2k::Config_MT>)&&!std::is_enum_v<typename T::value_type>>>
     : public IUiOption
 {
 public:
@@ -97,7 +97,7 @@ private:
 template <typename T>
 class UiOption<T,
                std::enable_if_t<
-                   (qwr::isSpecializationOfV<T, fb2k::Config> || qwr::isSpecializationOfV<T, fb2k::Config_MT>)&&std::is_enum_v<typename T::value_type>>>
+                   (qwr::is_specialization_of_v<T, fb2k::Config> || qwr::is_specialization_of_v<T, fb2k::Config_MT>)&&std::is_enum_v<typename T::value_type>>>
     : public IUiOption
 {
 public:

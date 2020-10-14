@@ -9,21 +9,25 @@ namespace qwr
 
 void ReportErrorWithPopup( const std::string& title, const std::string& errorText )
 {
-    assert( core_api::assert_main_thread() );
+    const auto report = [title, errorText] {
+        assert( core_api::assert_main_thread() );
 
-    FB2K_console_formatter() << title << ":\n"
-                             << errorText;
-    qwr::DelayedExecutor::GetInstance().AddTask( [errorText, title] {
-        popup_message::g_show( errorText.c_str(), title.c_str() );
-    } );
-    MessageBeep( MB_ICONASTERISK );
-}
+        FB2K_console_formatter() << title << ":\n"
+                                 << errorText;
+        qwr::DelayedExecutor::GetInstance().AddTask( [errorText, title] {
+            popup_message::g_show( errorText.c_str(), title.c_str() );
+        } );
+        MessageBeep( MB_ICONASTERISK );
+    };
 
-void ReportErrorWithPopupInMainThread( const std::string& title, const std::string& errorText )
-{
-    ::fb2k::inMainThread2( [title, errorText] {
-        ReportErrorWithPopup( title, errorText );
-    } );
+    if ( core_api::is_main_thread() )
+    {
+        report();
+    }
+    else
+    {
+        ::fb2k::inMainThread2( report );
+    }
 }
 
 } // namespace qwr
