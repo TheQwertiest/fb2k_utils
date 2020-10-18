@@ -96,7 +96,6 @@
   <ItemGroup>
     <ClCompile Include="qwr\abort_callback.cpp" />
     <ClCompile Include="qwr\acfu_integration.cpp" />
-    <ClCompile Include="qwr\fb2k_adv_config.cpp" />
     <ClCompile Include="qwr\fbk2_paths.cpp" />
     <ClCompile Include="qwr\delayed_executor.cpp" />
     <ClCompile Include="qwr\error_popup.cpp" />

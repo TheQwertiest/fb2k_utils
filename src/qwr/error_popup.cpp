@@ -17,6 +17,7 @@ void ReportErrorWithPopup( const std::string& title, const std::string& errorTex
         qwr::DelayedExecutor::GetInstance().AddTask( [errorText, title] {
             popup_message::g_show( errorText.c_str(), title.c_str() );
         } );
+
         MessageBeep( MB_ICONASTERISK );
     };
 
