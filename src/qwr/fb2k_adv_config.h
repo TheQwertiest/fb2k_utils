@@ -23,6 +23,11 @@ public:
 
     operator InnerT() const
     {
+        return GetValue();
+    }
+
+    InnerT GetValue() const
+    {
         if constexpr ( std::is_same_v<InnerT, std::string> )
         {
             pfc::string8_fast value;
@@ -33,11 +38,6 @@ public:
         {
             return config_.get();
         }
-    }
-
-    InnerT GetValue() const
-    {
-        return *this;
     }
 
 private:

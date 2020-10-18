@@ -76,6 +76,11 @@ public:
 
     operator EnumType() const
     {
+        return GetValue();
+    }
+
+    const EnumType GetValue() const
+    {
         return static_cast<EnumType>( static_cast<UnderlyingT>( config_ ) );
     }
 
@@ -127,6 +132,11 @@ public:
     {
         std::mutex mutex_;
         return config_;
+    }
+
+    const InnerT GetValue() const
+    {
+        return config_.GetValue();
     }
 
     const InnerT GetDefaultValue() const
