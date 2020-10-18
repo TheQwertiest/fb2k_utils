@@ -103,7 +103,6 @@
     <ClCompile Include="qwr\hook_handler.cpp" />
     <ClCompile Include="qwr\pfc_helpers_cfg.cpp" />
     <ClCompile Include="qwr\pfc_helpers_stream.cpp" />
-    <ClCompile Include="qwr\qwr_exception.cpp" />
     <ClCompile Include="qwr\semantic_version.cpp" />
     <ClCompile Include="qwr\string_helpers.cpp" />
     <ClCompile Include="qwr\text_helpers.cpp" />

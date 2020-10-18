@@ -16,14 +16,13 @@ public:
     {
     }
 
-    virtual ~QwrException() = default;
+    template <typename... Args>
+    explicit QwrException( std::wstring_view errorMessage, Args&&... errorMessageFmtArgs )
+        : std::runtime_error( qwr::unicode::ToU8( fmt::format( errorMessage, std::forward<Args>( errorMessageFmtArgs )... ) ) )
+    {
+    }
 
-    /// @details Do not pass dynamically generated strings here (e.g. fmt::format)!
-    ///          Should only be used with static strings to minimize performance impact.
-    _Post_satisfies_( checkValue ) static void ExpectTrue( bool checkValue, std::string_view errorMessage );
-
-    /// @details This overload is needed for SAL: it can't understand that `(bool)ptr == true` is the same as  `ptr != null`
-    static void ExpectTrue( _Post_notnull_ void* checkValue, std::string_view errorMessage );
+    ~QwrException() override = default;
 
     template <typename... Args>
     _Post_satisfies_( checkValue ) static void ExpectTrue( bool checkValue, std::string_view errorMessage, Args&&... errorMessageFmtArgs )
