@@ -73,8 +73,8 @@ std::basic_string<T> Join( const ContT& cont, T ch )
     return words_str;
 }
 
-template <typename T, typename T2>
-std::optional<T> GetNumber( std::basic_string_view<T2> strView, int base = 10 )
+template <typename T>
+std::optional<T> GetNumber( std::string_view strView, int base = 10 )
 {
     T number;
     if ( auto [pos, ec] = std::from_chars( strView.data(), strView.data() + strView.size(), number, base );
