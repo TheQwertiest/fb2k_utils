@@ -102,6 +102,7 @@ private:
 using ConfigString = Config<qwr::pfc_x::cfg_std_string, std::string>;
 using ConfigBool = Config<cfg_bool, bool>;
 using ConfigUint8 = Config<cfg_int_t<uint8_t>, uint8_t>;
+using ConfigUint32 = Config<cfg_int_t<uint32_t>, uint32_t>;
 template <typename T>
 using ConfigUint8Enum = Config<cfg_int_t<uint8_t>, T>;
 
@@ -158,6 +159,7 @@ private:
 using ConfigString_MT = Config_MT<qwr::pfc_x::cfg_std_string, std::string>;
 using ConfigBool_MT = Config_MT<cfg_bool, bool>;
 using ConfigUint8_MT = Config_MT<cfg_int_t<uint8_t>, uint8_t>;
+using ConfigUint32_MT = Config_MT<cfg_int_t<uint32_t>, uint32_t>;
 template <typename T>
 using ConfigUint8Enum_MT = Config_MT<cfg_int_t<uint8_t>, T>;
 

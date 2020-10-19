@@ -37,7 +37,22 @@ public:
         return *this;
     }
 
+    template <typename U = T,
+              std::enable_if_t<std::is_convertible_v<value_type, int> && !std::is_same_v<value_type, int>, int> = 0>
+    UiOption& operator=( int value )
+    {
+        SetValue( static_cast<value_type>( value ) );
+        return *this;
+    }
+
     operator value_type() const
+    {
+        return GetCurrentValue();
+    }
+
+    template <typename U = T,
+              std::enable_if_t<std::is_convertible_v<value_type, int> && !std::is_same_v<value_type, int>, int> = 0>
+    explicit operator int() const
     {
         return GetCurrentValue();
     }
