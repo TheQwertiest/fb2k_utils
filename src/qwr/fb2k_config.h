@@ -32,6 +32,11 @@ public:
 
     operator InnerT() const
     {
+        return GetValue();
+    }
+
+    const InnerT GetValue() const
+    {
         return config_;
     }
 

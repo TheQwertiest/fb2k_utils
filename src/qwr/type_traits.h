@@ -10,6 +10,7 @@ inline constexpr bool always_false_v = false;
 
 namespace detail
 {
+
 template <template <class...> class Expr, class SFINAE, class... Args>
 inline constexpr bool is_detected = false;
 
