@@ -3,9 +3,9 @@
   <ImportGroup Label="PropertySheets">
   </ImportGroup>
   <PropertyGroup>
-    <_PropertySheetDisplayName>span-lite</_PropertySheetDisplayName>
+    <_PropertySheetDisplayName>ring-span-lite</_PropertySheetDisplayName>
   </PropertyGroup>
   <PropertyGroup>
-    <IncludePath>$(SubmodulesDirectory)span-lite\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SubmodulesDirectory)ring-span\include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
 </Project>
