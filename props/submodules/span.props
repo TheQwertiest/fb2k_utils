@@ -8,4 +8,9 @@
   <PropertyGroup>
     <IncludePath>$(SubmodulesDirectory)span\include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>span_FEATURE_COMPARISON=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
 </Project>

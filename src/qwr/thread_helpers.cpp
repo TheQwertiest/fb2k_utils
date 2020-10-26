@@ -22,11 +22,11 @@ struct THREADNAME_INFO
 namespace qwr
 {
 
-void SetThreadName( std::thread& thread, const char* threadName )
+void SetThreadName( std::thread& thread, const std::string& threadName )
 {
     THREADNAME_INFO info{};
     info.dwType = 0x1000;
-    info.szName = threadName;
+    info.szName = threadName.c_str();
     info.dwThreadID = ::GetThreadId( static_cast<HANDLE>( thread.native_handle() ) );
     info.dwFlags = 0;
 

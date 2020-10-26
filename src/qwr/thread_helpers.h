@@ -5,6 +5,6 @@
 namespace qwr
 {
 
-void SetThreadName( std::thread& thread, const char* threadName );
+void SetThreadName( std::thread& thread, const std::string& threadName );
 
 }
