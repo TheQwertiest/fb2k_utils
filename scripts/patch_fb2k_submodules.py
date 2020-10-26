@@ -16,8 +16,13 @@ def patch(root_dir):
     subprocess.check_call(f"git apply --ignore-whitespace {' '.join(str(p) for p in patches)}", cwd=root_dir, shell=True)
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Patch fb2k submodules')
+    parser.add_argument('--root_dir', default=Path(os.getcwd()).absolute())
+
+    args = parser.parse_args()
+
     call_wrapper.final_call_decorator(
         "Patching submodules",
         "Patching submodules: success",
         "Patching submodules: failure!"
-    )(patch)()
+    )(patch)(args.root_dir)

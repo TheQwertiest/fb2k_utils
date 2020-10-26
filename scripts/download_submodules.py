@@ -31,8 +31,13 @@ def download(root_dir):
         download_submodule(root_dir, subdir.name)
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Download submodules')
+    parser.add_argument('--root_dir', default=Path(os.getcwd()).absolute())
+
+    args = parser.parse_args()
+
     call_wrapper.final_call_decorator(
         "Downloading submodules",
         "Downloading submodules: success",
         "Downloading submodules: failure!"
-    )(download)()
+    )(download)(args.root_dir)

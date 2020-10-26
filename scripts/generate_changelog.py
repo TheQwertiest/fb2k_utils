@@ -57,12 +57,12 @@ def generate(repo_dir: PathLike, output=True):
     if fixed_enhancements:
         changelog += '### Added\n'
         for i in fixed_enhancements:
-            changelog += f'- {i["title"]} (#{i["number"]})\n'
+            changelog += f'- {i["title"]} (#{i["number"]}).\n'
         changelog += '\n'
     if fixed_bugs:
         changelog += '### Fixed\n'
         for i in fixed_bugs:
-            changelog += f'- {i["title"]} (#{i["number"]})\n'
+            changelog += f'- {i["title"]} (#{i["number"]}).\n'
         changelog += '\n'
 
     changelog = re.sub(
