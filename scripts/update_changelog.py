@@ -27,6 +27,10 @@ def update(root_dir: PathLike,
            new_version: str,
            silent: bool = False):
 
+    cur_dir = Path(__file__).parent.absolute()
+    if not root_dir:
+        root_dir = cur_dir.parent
+
     date = datetime.today().strftime('%Y-%m-%d')
     changelog_path = root_dir/'CHANGELOG.md'
     repo = get_current_repo(root_dir)
@@ -84,11 +88,8 @@ def update(root_dir: PathLike,
     return current_changelog
 
 if __name__ == '__main__':
-    cur_dir = Path(__file__).parent.absolute()
-    root_dir = cur_dir.parent
-
     parser = argparse.ArgumentParser(description='Update changelog with new version')
-    parser.add_argument('--repo')
+    parser.add_argument('--root_dir', default=Path(os.getcwd()).absolute())
     parser.add_argument('release_version', type=str, help='release version')
 
     args = parser.parse_args()
@@ -100,7 +101,7 @@ if __name__ == '__main__':
     )(
     update
     )(
-        root_dir,
+        args.root_dir,
         args.release_version
     )
 
