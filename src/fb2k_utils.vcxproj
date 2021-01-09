@@ -96,7 +96,7 @@
   <ItemGroup>
     <ClCompile Include="qwr\abort_callback.cpp" />
     <ClCompile Include="qwr\acfu_integration.cpp" />
-    <ClCompile Include="qwr\fbk2_paths.cpp" />
+    <ClCompile Include="qwr\fb2k_paths.cpp" />
     <ClCompile Include="qwr\delayed_executor.cpp" />
     <ClCompile Include="qwr\error_popup.cpp" />
     <ClCompile Include="qwr\file_helpers.cpp" />
@@ -121,7 +121,7 @@
     <ClInclude Include="qwr\acfu_integration.h" />
     <ClInclude Include="qwr\fb2k_adv_config.h" />
     <ClInclude Include="qwr\fb2k_config_ui_option.h" />
-    <ClInclude Include="qwr\fbk2_paths.h" />
+    <ClInclude Include="qwr\fb2k_paths.h" />
     <ClInclude Include="qwr\delayed_executor.h" />
     <ClInclude Include="qwr\error_popup.h" />
     <ClInclude Include="qwr\file_helpers.h" />

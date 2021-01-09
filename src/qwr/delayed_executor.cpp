@@ -13,6 +13,8 @@ DelayedExecutor& DelayedExecutor::GetInstance()
 
 void DelayedExecutor::EnableExecution()
 {
+    assert( core_api::is_main_thread() );
+
     canExecute_ = true;
     while ( !tasks_.empty() )
     {

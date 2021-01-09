@@ -1,6 +1,6 @@
 #include <stdafx.h>
 
-#include "fbk2_paths.h"
+#include "fb2k_paths.h"
 
 #include <filesystem>
 

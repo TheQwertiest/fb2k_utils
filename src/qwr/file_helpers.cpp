@@ -3,7 +3,7 @@
 #include "file_helpers.h"
 
 #include <qwr/abort_callback.h>
-#include <qwr/fbk2_paths.h>
+#include <qwr/fb2k_paths.h>
 #include <qwr/final_action.h>
 #include <qwr/string_helpers.h>
 #include <qwr/text_helpers.h>
