@@ -67,4 +67,14 @@ void CheckWinApi( _Post_notnull_ void* checkValue, std::string_view functionName
     return CheckWinApi( static_cast<bool>( checkValue ), functionName );
 }
 
+#pragma warning( push )
+#pragma warning( disable : 28196 ) // The expression does not evaluate to true
+
+_Post_satisfies_( checkValue ) void CheckWin32( int winErrorCode, std::string_view functionName )
+{
+    CheckHR( HRESULT_FROM_WIN32( winErrorCode ), functionName );
+}
+
+#pragma warning( pop )
+
 } // namespace qwr::error

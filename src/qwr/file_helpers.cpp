@@ -310,10 +310,7 @@ UINT DetectFileCharset( const std::u8string& path )
 
 std::optional<fs::path> FileDialog( const std::wstring& title,
                                     bool saveFile,
-                                    const GUID& savePathGuid,
-                                    nonstd::span<const COMDLG_FILTERSPEC> filterSpec,
-                                    const std::wstring& defaultExtension,
-                                    const std::wstring& defaultFilename )
+                                    const FileDialogOptions& options )
 {
     _COM_SMARTPTR_TYPEDEF( IFileDialog, __uuidof( IFileDialog ) );
     _COM_SMARTPTR_TYPEDEF( IShellItem, __uuidof( IShellItem ) );
@@ -328,30 +325,33 @@ std::optional<fs::path> FileDialog( const std::wstring& title,
         hr = pfd->GetOptions( &dwFlags );
         qwr::error::CheckHR( hr, "GetOptions" );
 
-        hr = pfd->SetClientGuid( savePathGuid );
-        qwr::error::CheckHR( hr, "SetClientGuid" );
+        if ( options.savePathGuid )
+        {
+            hr = pfd->SetClientGuid( *options.savePathGuid );
+            qwr::error::CheckHR( hr, "SetClientGuid" );
+        }
 
         hr = pfd->SetTitle( title.c_str() );
         qwr::error::CheckHR( hr, "SetTitle" );
 
-        if ( !filterSpec.empty() )
+        if ( !options.filterSpec.empty() )
         {
-            hr = pfd->SetFileTypes( filterSpec.size(), filterSpec.data() );
+            hr = pfd->SetFileTypes( options.filterSpec.size(), options.filterSpec.data() );
             qwr::error::CheckHR( hr, "SetFileTypes" );
         }
 
         //hr = pfd->SetFileTypeIndex( 1 );
         //qwr::error::CheckHR( hr, "SetFileTypeIndex" );
 
-        if ( defaultExtension.length() )
+        if ( options.defaultExtension.length() )
         {
-            hr = pfd->SetDefaultExtension( defaultExtension.c_str() );
+            hr = pfd->SetDefaultExtension( options.defaultExtension.c_str() );
             qwr::error::CheckHR( hr, "SetDefaultExtension" );
         }
 
-        if ( defaultFilename.length() )
+        if ( options.defaultFilename.length() )
         {
-            hr = pfd->SetFileName( defaultFilename.c_str() );
+            hr = pfd->SetFileName( options.defaultFilename.c_str() );
             qwr::error::CheckHR( hr, "SetFileName" );
         }
 
@@ -363,6 +363,10 @@ std::optional<fs::path> FileDialog( const std::wstring& title,
         qwr::error::CheckHR( hr, "SetDefaultFolder" );
 
         hr = pfd->Show( nullptr );
+        if ( hr == HRESULT_FROM_WIN32( ERROR_CANCELLED ) )
+        {
+            return std::nullopt;
+        }
         qwr::error::CheckHR( hr, "Show" );
 
         IShellItemPtr psiResult;
@@ -384,10 +388,12 @@ std::optional<fs::path> FileDialog( const std::wstring& title,
     }
     catch ( const std::filesystem::filesystem_error& )
     {
+        // TODO: replace with proper error reporting
         return std::nullopt;
     }
     catch ( const QwrException& )
     {
+        // TODO: replace with proper error reporting
         return std::nullopt;
     }
 }

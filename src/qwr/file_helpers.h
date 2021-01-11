@@ -22,12 +22,17 @@ void WriteFile( const std::filesystem::path& path, const std::u8string& content,
 
 UINT DetectFileCharset( const std::u8string& path );
 
+struct FileDialogOptions
+{
+    std::vector<COMDLG_FILTERSPEC> filterSpec{ { L"All files", L"*.*" } };
+    std::wstring defaultExtension = L"";
+    std::wstring defaultFilename = L"";
+    std::optional<GUID> savePathGuid;
+};
+
 std::optional<std::filesystem::path>
 FileDialog( const std::wstring& title,
             bool saveFile,
-            const GUID& savePathGuid,
-            nonstd::span<const COMDLG_FILTERSPEC> filterSpec = std::array<COMDLG_FILTERSPEC, 1>{ COMDLG_FILTERSPEC{ L"All files", L"*.*" } },
-            const std::wstring& defaultExtension = L"",
-            const std::wstring& defaultFilename = L"" );
+            const FileDialogOptions& options = {} );
 
 } // namespace qwr::file
