@@ -1,11 +1,11 @@
 #pragma once
 
 #include <stdexcept>
+#include <filesystem>
 
 namespace qwr
 {
 
-/// @brief This exception should be used when JS exception is not set
 class QwrException
     : public std::runtime_error
 {
@@ -19,6 +19,11 @@ public:
     template <typename... Args>
     explicit QwrException( std::wstring_view errorMessage, Args&&... errorMessageFmtArgs )
         : std::runtime_error( qwr::unicode::ToU8( fmt::format( errorMessage, std::forward<Args>( errorMessageFmtArgs )... ) ) )
+    {
+    }
+
+    explicit QwrException( const std::filesystem::filesystem_error& e )
+        : std::runtime_error( qwr::unicode::ToU8_FromAcpToWide( e.what() ) )
     {
     }
 
