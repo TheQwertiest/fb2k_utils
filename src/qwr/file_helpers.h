@@ -20,7 +20,7 @@ std::wstring ReadFileW( const std::filesystem::path& path, UINT codepage, bool c
 /// @throw smp::SmpException
 void WriteFile( const std::filesystem::path& path, const std::u8string& content, bool write_bom = true );
 
-UINT DetectFileCharset( const std::u8string& path );
+UINT DetectFileCharset( const std::filesystem::path& path );
 
 struct FileDialogOptions
 {

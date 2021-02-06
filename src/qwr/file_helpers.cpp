@@ -303,7 +303,7 @@ void WriteFile( const fs::path& path, const std::u8string& content, bool write_b
     memcpy( pFileView + offset, content.c_str(), content.length() );
 }
 
-UINT DetectFileCharset( const std::u8string& path )
+UINT DetectFileCharset( const fs::path& path )
 {
     return qwr::DetectCharSet( FileReader{ path }.GetFileContent() ).value_or( CP_ACP );
 }
