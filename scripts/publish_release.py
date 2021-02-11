@@ -85,7 +85,7 @@ def git_commit_new_beta_version(repo_dir: PathLike,
                                 old_version):
     with open(version_file, 'w') as output:
         new_ver = old_version.bump_patch()
-        new_ver = new_ver.replace(prerelease='beta')
+        new_ver = new_ver.replace(prerelease='dev')
         output.write(str(new_ver) + '\n')
 
     cmd_git_add = [
