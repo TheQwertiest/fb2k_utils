@@ -9,6 +9,19 @@ namespace qwr::string
 {
 
 template <typename T>
+bool EndsWith( std::basic_string_view<T> str1, std::basic_string_view<T> str2 )
+{
+    if ( str1.length() >= str2.length() )
+    {
+        return ( 0 == str1.compare( str1.length() - str2.length(), str2.length(), str2 ) );
+    }
+    else
+    {
+        return false;
+    }
+}
+
+template <typename T>
 std::basic_string_view<T> TrimView( std::basic_string_view<T> str )
 {
     size_t first = str.find_first_not_of( ' ' );
