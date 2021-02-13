@@ -24,7 +24,7 @@
       <OutputFile>$(LibDir)$(ProjectName).bsc</OutputFile>
     </Bscmake>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(MainDir);$(GeneratedDir);$(IndependentGeneratedDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(GeneratedDir);$(IndependentGeneratedDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
