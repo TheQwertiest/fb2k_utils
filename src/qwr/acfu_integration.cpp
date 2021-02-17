@@ -28,9 +28,9 @@ bool QwrSource::is_newer( const file_info& info )
         return false;
     }
 
-    const std::u8string availableVersion = [&info]() {
-        std::u8string version = info.meta_get( "version", 0 );
-        version = qwr::string::Trim<char8_t>( version );
+    const qwr::u8string availableVersion = [&info]() {
+        qwr::u8string version = info.meta_get( "version", 0 );
+        version = qwr::string::TrimView<char>( version );
         if ( version[0] == 'v' )
         {
             version = version.substr( 1 );

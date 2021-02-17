@@ -22,7 +22,7 @@ public:
         }
 
         uint32_t id = curId_++;
-        while ( callbacks_.count( id ) || !id )
+        while ( callbacks_.contains( id ) || !id )
         {
             id = curId_++;
         }

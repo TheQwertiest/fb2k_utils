@@ -9,14 +9,14 @@ using namespace qwr;
 namespace
 {
 
-std::u8string MessageFromErrorCode( DWORD errorCode )
+qwr::u8string MessageFromErrorCode( DWORD errorCode )
 {
     return qwr::unicode::ToU8_FromAcpToWide( std::system_category().message( errorCode ) );
 }
 
-void ThrowParsedWinapiError( DWORD errorCode, std::string_view functionName )
+void ThrowParsedWinapiError( DWORD errorCode, qwr::u8string_view functionName )
 {
-    const auto errorMessage = [errorCode]() -> std::u8string {
+    const auto errorMessage = [errorCode]() -> qwr::u8string {
         if ( errorCode == ERROR_SUCCESS )
         { // some functions are bugged, e.g. CreateFont (<https://github.com/TheQwertiest/foo_spider_monkey_panel/issues/92>)
             return "Function failed, but returned a `SUCCESS` error code, which is usually caused by a bugged WinAPI. "
@@ -43,7 +43,7 @@ namespace qwr::error
 #pragma warning( push )
 #pragma warning( disable : 28196 ) // The expression does not evaluate to true
 
-_Post_satisfies_( SUCCEEDED( hr ) ) void CheckHR( HRESULT hr, std::string_view functionName )
+_Post_satisfies_( SUCCEEDED( hr ) ) void CheckHR( HRESULT hr, qwr::u8string_view functionName )
 {
     if ( FAILED( hr ) )
     {
@@ -51,7 +51,7 @@ _Post_satisfies_( SUCCEEDED( hr ) ) void CheckHR( HRESULT hr, std::string_view f
     }
 }
 
-_Post_satisfies_( checkValue ) void CheckWinApi( bool checkValue, std::string_view functionName )
+_Post_satisfies_( checkValue ) void CheckWinApi( bool checkValue, qwr::u8string_view functionName )
 {
     if ( !checkValue )
     {
@@ -62,7 +62,7 @@ _Post_satisfies_( checkValue ) void CheckWinApi( bool checkValue, std::string_vi
 
 #pragma warning( pop )
 
-void CheckWinApi( _Post_notnull_ void* checkValue, std::string_view functionName )
+void CheckWinApi( _Post_notnull_ void* checkValue, qwr::u8string_view functionName )
 {
     return CheckWinApi( static_cast<bool>( checkValue ), functionName );
 }
@@ -70,7 +70,7 @@ void CheckWinApi( _Post_notnull_ void* checkValue, std::string_view functionName
 #pragma warning( push )
 #pragma warning( disable : 28196 ) // The expression does not evaluate to true
 
-_Post_satisfies_( checkValue ) void CheckWin32( int winErrorCode, std::string_view functionName )
+_Post_satisfies_( checkValue ) void CheckWin32( int winErrorCode, qwr::u8string_view functionName )
 {
     CheckHR( HRESULT_FROM_WIN32( winErrorCode ), functionName );
 }

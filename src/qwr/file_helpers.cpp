@@ -9,7 +9,7 @@
 #include <qwr/text_helpers.h>
 #include <qwr/winapi_error_helpers.h>
 
-#include <nonstd/span.hpp>
+#include <span>
 
 #include <filesystem>
 
@@ -116,7 +116,7 @@ T ConvertFileContent( const std::wstring& path, std::string_view content, UINT c
         {
             if ( CP_UTF8 == detectedCodepage )
             {
-                fileContent = std::u8string( curPos, curSize );
+                fileContent = qwr::u8string( curPos, curSize );
             }
             else
             {
@@ -265,9 +265,9 @@ T ReadFileImpl( const fs::path& path, UINT codepage, bool checkFileExistense )
 namespace qwr::file
 {
 
-std::u8string ReadFile( const fs::path& path, UINT codepage, bool checkFileExistense )
+qwr::u8string ReadFile( const fs::path& path, UINT codepage, bool checkFileExistense )
 {
-    return ReadFileImpl<std::u8string>( path, codepage, checkFileExistense );
+    return ReadFileImpl<qwr::u8string>( path, codepage, checkFileExistense );
 }
 
 std::wstring ReadFileW( const fs::path& path, UINT codepage, bool checkFileExistense )
@@ -275,7 +275,7 @@ std::wstring ReadFileW( const fs::path& path, UINT codepage, bool checkFileExist
     return ReadFileImpl<std::wstring>( path, codepage, checkFileExistense );
 }
 
-void WriteFile( const fs::path& path, const std::u8string& content, bool write_bom )
+void WriteFile( const fs::path& path, qwr::u8string_view content, bool write_bom )
 {
     const int offset = ( write_bom ? sizeof( kBom8 ) : 0 );
     HANDLE hFile = CreateFile( path.wstring().c_str(), GENERIC_READ | GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, nullptr );
@@ -300,7 +300,7 @@ void WriteFile( const fs::path& path, const std::u8string& content, bool write_b
     {
         memcpy( pFileView, kBom8, sizeof( kBom8 ) );
     }
-    memcpy( pFileView + offset, content.c_str(), content.length() );
+    memcpy( pFileView + offset, content.data(), content.size() );
 }
 
 UINT DetectFileCharset( const fs::path& path )

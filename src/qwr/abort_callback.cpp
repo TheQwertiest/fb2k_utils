@@ -59,7 +59,7 @@ void GlobalAbortCallback::AddListener( pfc::event& listener )
 {
     std::scoped_lock sl( listenerMutex_ );
 
-    assert( !listeners_.count( &listener ) );
+    assert( !listeners_.contains( &listener ) );
     listeners_.emplace( &listener, listener );
 }
 
@@ -67,7 +67,7 @@ void GlobalAbortCallback::RemoveListener( pfc::event& listener )
 {
     std::scoped_lock sl( listenerMutex_ );
 
-    assert( listeners_.count( &listener ) );
+    assert( listeners_.contains( &listener ) );
     listeners_.erase( &listener );
 }
 
@@ -93,7 +93,7 @@ abort_callback_event GlobalAbortCallback::get_abort_event() const
     return abortImpl_.get_abort_event();
 }
 
-TimedAbortCallback::TimedAbortCallback( const std::string& timeoutLogMessage, uint32_t timeoutSeconds )
+TimedAbortCallback::TimedAbortCallback( const qwr::u8string& timeoutLogMessage, uint32_t timeoutSeconds )
     : timeoutLogMessage_( timeoutLogMessage )
     , hTimer_( g_timerManager.CreateTimer( timerProc, this, timeoutSeconds ) )
 {

@@ -24,7 +24,7 @@ HookHandler& HookHandler::GetInstance()
 
 void HookHandler::UnregisterHook( uint32_t hookId )
 {
-    assert( callbacks_.count( hookId ) );
+    assert( callbacks_.contains( hookId ) );
     callbacks_.erase( hookId );
 }
 

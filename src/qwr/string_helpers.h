@@ -9,19 +9,6 @@ namespace qwr::string
 {
 
 template <typename T>
-bool EndsWith( std::basic_string_view<T> str1, std::basic_string_view<T> str2 )
-{
-    if ( str1.length() >= str2.length() )
-    {
-        return ( 0 == str1.compare( str1.length() - str2.length(), str2.length(), str2 ) );
-    }
-    else
-    {
-        return false;
-    }
-}
-
-template <typename T>
 std::basic_string_view<T> TrimView( std::basic_string_view<T> str )
 {
     size_t first = str.find_first_not_of( ' ' );
@@ -40,7 +27,7 @@ std::basic_string<T> Trim( std::basic_string_view<T> str )
     return std::basic_string<T>{ view.data(), view.size() };
 }
 
-std::vector<std::u8string_view> SplitByLines( std::u8string_view str );
+std::vector<qwr::u8string_view> SplitByLines( qwr::u8string_view str );
 
 template <typename T>
 std::vector<std::basic_string_view<T>> Split( std::basic_string_view<T> str, const std::basic_string<T>& separator )

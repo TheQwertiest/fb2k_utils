@@ -2,7 +2,7 @@
 
 #include <shtypes.h>
 
-#include <nonstd/span.hpp>
+#include <span>
 
 #include <filesystem>
 #include <optional>
@@ -12,13 +12,13 @@ namespace qwr::file
 {
 
 /// @throw smp::SmpException
-std::u8string ReadFile( const std::filesystem::path& path, UINT codepage, bool checkFileExistense = true );
+qwr::u8string ReadFile( const std::filesystem::path& path, UINT codepage, bool checkFileExistense = true );
 
 /// @throw smp::SmpException
 std::wstring ReadFileW( const std::filesystem::path& path, UINT codepage, bool checkFileExistense = true );
 
 /// @throw smp::SmpException
-void WriteFile( const std::filesystem::path& path, const std::u8string& content, bool write_bom = true );
+void WriteFile( const std::filesystem::path& path, qwr::u8string_view content, bool write_bom = true );
 
 UINT DetectFileCharset( const std::filesystem::path& path );
 

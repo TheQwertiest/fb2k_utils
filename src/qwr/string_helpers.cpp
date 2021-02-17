@@ -5,10 +5,10 @@
 namespace qwr::string
 {
 
-std::vector<std::u8string_view> SplitByLines( std::u8string_view str )
+std::vector<qwr::u8string_view> SplitByLines( qwr::u8string_view str )
 {
-    std::vector<std::u8string_view> lines;
-    for ( std::u8string_view curScope = str; !curScope.empty(); )
+    std::vector<qwr::u8string_view> lines;
+    for ( qwr::u8string_view curScope = str; !curScope.empty(); )
     {
         if ( size_t pos = curScope.find_first_of( "\r\n" );
              std::string::npos != pos )
@@ -27,7 +27,7 @@ std::vector<std::u8string_view> SplitByLines( std::u8string_view str )
         else
         {
             lines.emplace_back( curScope.data(), curScope.size() );
-            curScope = std::u8string_view{};
+            curScope = qwr::u8string_view{};
         }
     }
 

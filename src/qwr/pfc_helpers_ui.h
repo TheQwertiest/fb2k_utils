@@ -10,7 +10,7 @@ namespace qwr::pfc_x
 template <typename T>
 std::basic_string<T> uGetWindowText( HWND wnd )
 {
-    static_assert( std::is_same_v<T, wchar_t> || std::is_same_v<T, char8_t> || std::is_same_v<T, char> );
+    static_assert( std::is_same_v<T, wchar_t> || std::is_same_v<T, char> );
 
     auto size = ::GetWindowTextLength( wnd );
     if ( !size )

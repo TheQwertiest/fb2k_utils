@@ -2,7 +2,7 @@
 
 #include <qwr/pfc_helpers_ui.h>
 
-#include <nonstd/span.hpp>
+#include <span>
 
 namespace qwr::ui
 {
@@ -80,8 +80,8 @@ class UiDdx_TextEdit final
 public:
     using value_type = typename T;
 
-    static_assert( std::is_convertible_v<T, std::u8string> );
-    static_assert( std::is_assignable_v<T&, std::u8string> );
+    static_assert( std::is_convertible_v<T, qwr::u8string> );
+    static_assert( std::is_assignable_v<T&, qwr::u8string> );
 
 public:
     UiDdx_TextEdit( T& value, int controlId )
@@ -108,7 +108,7 @@ public:
             return;
         }
 
-        value_ = qwr::pfc_x::uGetDlgItemText<char8_t>( hWnd_, controlId_ );
+        value_ = qwr::pfc_x::uGetDlgItemText<char>( hWnd_, controlId_ );
     }
     void WriteToUi() override
     {
@@ -120,11 +120,11 @@ public:
         const auto& value = [&] {
             if constexpr ( std::is_convertible_v<decltype( value_ ), pfc::string8_fast> )
             {
-                return std::u8string( static_cast<pfc::string8_fast>( value_ ).c_str() );
+                return qwr::u8string( static_cast<pfc::string8_fast>( value_ ).c_str() );
             }
             else
             {
-                return static_cast<std::u8string>( value_ );
+                return static_cast<qwr::u8string>( value_ );
             }
         }();
 
@@ -206,7 +206,7 @@ public:
     static_assert( std::is_assignable_v<T&, int> );
 
 public:
-    UiDdx_RadioRange( T& value, nonstd::span<const int> controlIdList )
+    UiDdx_RadioRange( T& value, std::span<const int> controlIdList )
         : value_( value )
         , controlIdList_( controlIdList.begin(), controlIdList.end() )
     {

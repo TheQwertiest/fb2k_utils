@@ -1,7 +1,7 @@
 #pragma once
 
-#include <stdexcept>
 #include <filesystem>
+#include <stdexcept>
 
 namespace qwr
 {
@@ -11,14 +11,15 @@ class QwrException
 {
 public:
     template <typename... Args>
-    explicit QwrException( std::string_view errorMessage, Args&&... errorMessageFmtArgs )
+    explicit QwrException( qwr::u8string_view errorMessage, Args&&... errorMessageFmtArgs )
         : std::runtime_error( fmt::format( errorMessage, std::forward<Args>( errorMessageFmtArgs )... ) )
     {
     }
 
     template <typename... Args>
     explicit QwrException( std::wstring_view errorMessage, Args&&... errorMessageFmtArgs )
-        : std::runtime_error( qwr::unicode::ToU8( fmt::format( errorMessage, std::forward<Args>( errorMessageFmtArgs )... ) ) )
+        : std::runtime_error(qwr::unicode::ToU8(
+                fmt::format( errorMessage, std::forward<Args>( errorMessageFmtArgs )... ) ) )
     {
     }
 
@@ -29,22 +30,12 @@ public:
 
     ~QwrException() override = default;
 
-    template <typename... Args>
-    _Post_satisfies_( checkValue ) static void ExpectTrue( bool checkValue, std::string_view errorMessage, Args&&... errorMessageFmtArgs )
+    template <typename StrT, typename... Args>
+    _Post_satisfies_( checkValue ) static void ExpectTrue( bool checkValue, StrT errorMessage, Args&&... errorMessageFmtArgs )
     {
         if ( !checkValue )
         {
             throw QwrException( errorMessage, std::forward<Args>( errorMessageFmtArgs )... );
-        }
-    }
-
-    template <typename... Args>
-    _Post_satisfies_( checkValue ) static void ExpectTrue( bool checkValue, std::wstring_view errorMessage, Args&&... errorMessageFmtArgs )
-    {
-        if ( !checkValue )
-        {
-            const auto u8msg = qwr::unicode::ToU8( fmt::format( errorMessage, std::forward<Args>( errorMessageFmtArgs )... ) );
-            throw QwrException( u8msg );
         }
     }
 

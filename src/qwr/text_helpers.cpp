@@ -4,7 +4,7 @@
 
 #include <MLang.h>
 
-#include <nonstd/span.hpp>
+#include <span>
 
 #include <cwctype>
 #include <optional>
@@ -24,7 +24,7 @@ enum class CodePage : UINT
     Utf8 = CP_UTF8,
 };
 
-UINT FilterEncodings( nonstd::span<const DetectEncodingInfo> encodings )
+UINT FilterEncodings( std::span<const DetectEncodingInfo> encodings )
 {
     assert( !encodings.empty() );
 
@@ -77,7 +77,7 @@ std::optional<UINT> DetectCharSet( std::string_view text )
         return std::nullopt;
     }
 
-    return FilterEncodings( nonstd::span<const DetectEncodingInfo>( encodings.data(), encodingCount ) );
+    return FilterEncodings( std::span<const DetectEncodingInfo>( encodings.data(), encodingCount ) );
 }
 
 } // namespace qwr
