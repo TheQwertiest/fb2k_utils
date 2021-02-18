@@ -13,7 +13,7 @@ public:
     cfg_std_string& operator=( const cfg_std_string& p_val );
     cfg_std_string& operator=( qwr::u8string_view p_val );
 
-    operator const qwr::u8string &() const;
+    operator const qwr::u8string&() const;
 
 protected:
     // cfg_var

@@ -22,7 +22,7 @@ cfg_std_string& cfg_std_string::operator=( qwr::u8string_view p_val )
     return *this;
 }
 
-cfg_std_string::operator const qwr::u8string &() const
+cfg_std_string::operator const qwr::u8string&() const
 {
     return value_;
 }

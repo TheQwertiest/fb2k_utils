@@ -107,6 +107,7 @@
     <ClCompile Include="qwr\text_helpers.cpp" />
     <ClCompile Include="qwr\thread_helpers.cpp" />
     <ClCompile Include="qwr\thread_pool.cpp" />
+    <ClCompile Include="qwr\ui_centered_message_box.cpp" />
     <ClCompile Include="qwr\unicode.cpp" />
     <ClCompile Include="qwr\winapi_error_helpers.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -130,6 +131,7 @@
     <ClInclude Include="qwr\pfc_helpers_cfg.h" />
     <ClInclude Include="qwr\thread_pool.h" />
     <ClInclude Include="qwr\type_traits.h" />
+    <ClInclude Include="qwr\ui_centered_message_box.h" />
     <ClInclude Include="qwr\ui_option.h" />
     <ClInclude Include="qwr\fb2k_config.h" />
     <ClInclude Include="qwr\pfc_helpers_cnt.h" />

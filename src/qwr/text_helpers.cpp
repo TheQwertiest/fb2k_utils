@@ -4,10 +4,9 @@
 
 #include <MLang.h>
 
-#include <span>
-
 #include <cwctype>
 #include <optional>
+#include <span>
 
 namespace
 {

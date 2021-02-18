@@ -2,10 +2,9 @@
 
 #include <shtypes.h>
 
-#include <span>
-
 #include <filesystem>
 #include <optional>
+#include <span>
 #include <string>
 
 namespace qwr::file

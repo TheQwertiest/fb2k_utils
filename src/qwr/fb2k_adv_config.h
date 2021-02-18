@@ -39,7 +39,7 @@ public:
             return static_cast<value_type>( config_.get() );
         }
     }
-    
+
     template <typename ArgT, std::enable_if_t<std::is_convertible_v<ArgT, value_type>, int> = 0>
     AdvConfig& operator=( const ArgT& value )
     {

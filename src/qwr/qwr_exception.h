@@ -18,8 +18,8 @@ public:
 
     template <typename... Args>
     explicit QwrException( std::wstring_view errorMessage, Args&&... errorMessageFmtArgs )
-        : std::runtime_error(qwr::unicode::ToU8(
-                fmt::format( errorMessage, std::forward<Args>( errorMessageFmtArgs )... ) ) )
+        : std::runtime_error( qwr::unicode::ToU8(
+            fmt::format( errorMessage, std::forward<Args>( errorMessageFmtArgs )... ) ) )
     {
     }
 
