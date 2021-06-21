@@ -70,38 +70,6 @@ index 1ab7853..19de646 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
-diff --git a/SDK/popup_message.cpp b/SDK/popup_message.cpp
-index 36507dc..c4f198c 100644
---- a/submodules/foobar2000/SDK/popup_message.cpp
-+++ b/submodules/foobar2000/SDK/popup_message.cpp
-@@ -22,12 +22,13 @@ void popup_message::g_complain(const char * p_whatFailed, const char * msg) {
-     g_complain( PFC_string_formatter() << p_whatFailed << ": " << msg );
- }
- 
-+#if FOOBAR2000_TARGET_VERSION >= 80
- void popup_message_v3::show_query( const char * title, const char * msg, unsigned buttons, completion_notify::ptr reply) {
-     query_t q;
-     q.title = title; q.msg = msg; q.buttons = buttons; q.reply = reply;
-     this->show_query( q );
- }
--
-+#endif
- 
- #ifdef FOOBAR2000_DESKTOP_WINDOWS
- void popup_message_v2::g_show(HWND parent, const char * msg, const char * title) {
-@@ -68,6 +69,7 @@ void popup_message::g_showToastLongDuration(const char * msg) {
- #endif // FOOBAR2000_MODERN
- 
- #ifdef FOOBAR2000_DESKTOP_WINDOWS
-+#if FOOBAR2000_TARGET_VERSION >= 80
- int popup_message_v3::messageBox(HWND parent, const char* msg, const char* title, UINT flags) {
-        query_t q = {};
-        q.title = title;
-@@ -133,3 +135,4 @@ int popup_message_v3::messageBox(HWND parent, const char* msg, const char* title
-        return -1;
- }
- #endif
-+#endif
 diff --git a/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj b/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj
 index 1805416..6dca16e 100644
 --- a/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj
