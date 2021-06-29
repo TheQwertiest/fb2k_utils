@@ -34,7 +34,7 @@ def generate(repo_dir: PathLike, output=True):
         'api',
         'repos/:owner/:repo/issues',
         '--method=GET',
-        '-F', 'labels="fixed in nightly"',
+        '-F', 'labels="fixed in dev build"',
         '-F', 'state=open'])
     print('> ' + cmd_list_issues)
     json_str = subprocess.check_output(cmd_list_issues, text=True, env=os.environ, cwd=repo_dir)
