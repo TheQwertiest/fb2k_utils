@@ -6,6 +6,7 @@ import os
 import subprocess
 from pathlib import Path
 from typing import Union
+from urllib.parse import quote
 
 import call_wrapper
 
@@ -14,13 +15,14 @@ PathLike = Union[str, Path]
 def close(repo_dir: PathLike):
     if not repo_dir:
         repo_dir = Path(os.getcwd()).absolute()
-
+        
+    label_to_close = "fixed in dev build"
     cmd_list_issues = ' '.join([
         'gh',
         'api',
         'repos/:owner/:repo/issues',
         '--method=GET',
-        '-F', 'labels="fixed in dev build"',
+        '-F', f'labels="{label_to_close}"',
         '-F', 'state=open'])
     print('> ' + cmd_list_issues)
     json_str = subprocess.check_output(cmd_list_issues, text=True, env=os.environ, cwd=repo_dir)
@@ -34,7 +36,7 @@ def close(repo_dir: PathLike):
         return [
             'gh',
             'api',
-            f'/repos/:owner/:repo/issues/{str(issue_number)}/labels/fixed%20in%20nightly',
+            f'/repos/:owner/:repo/issues/{str(issue_number)}/labels/{quote(label_to_close)}',
             '--method=DELETE',
             '--silent']
     def get_cmd_close_issue(issue_number):
