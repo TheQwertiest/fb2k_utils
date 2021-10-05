@@ -5,7 +5,9 @@
   <PropertyGroup>
     <OutputPath>$(PlatformConfigurationDir)bin\</OutputPath>
     <DebugSymbols>true</DebugSymbols>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>5</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
