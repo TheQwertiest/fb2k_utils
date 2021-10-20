@@ -128,7 +128,8 @@ def git_publish_release(repo_dir: PathLike,
             shutil.rmtree(temp_dir)
 
 def publish(repo_dir: PathLike,
-            release_version):
+            release_version,
+            skip_changelog):
     if not repo_dir:
         repo_dir = get_cwd_repo_root()
     if not release_version:
@@ -140,7 +141,10 @@ def publish(repo_dir: PathLike,
         raise ValueError('Repo is missing VERSION file')
 
     git_add_new_version(repo_dir, version_file, release_version)
-    changelog = git_add_new_changelog(repo_dir, release_version)
+    if skip_changelog:
+        changelog = ''
+    else:
+        changelog = git_add_new_changelog(repo_dir, release_version)
     git_commit_and_push_new_files(repo_dir, release_version)
     # Sleep to avoid build conflicts
     print('Sleeping for a bit...')
@@ -151,6 +155,7 @@ def publish(repo_dir: PathLike,
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Publish GitHub release')
     parser.add_argument('--repo_dir', default=get_cwd_repo_root())
+    parser.add_argument('--skip_changelog', default=False, action='store_true')
     parser.add_argument('release_version', type=str, help='release version')
 
     args = parser.parse_args()
@@ -163,6 +168,7 @@ if __name__ == '__main__':
     publish
     )(
         args.repo_dir,
-        args.release_version
+        args.release_version,
+        args.skip_changelog
     )
 
