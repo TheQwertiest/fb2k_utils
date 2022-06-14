@@ -15,9 +15,25 @@ index 6570435..57960fc 100644
  // Use this to determine what foobar2000 SDK version is in use, undefined for releases older than 2018
  #define FOOBAR2000_SDK_VERSION 20220104
 diff --git a/submodules/foobar2000/SDK/foobar2000_SDK.vcxproj b/submodules/foobar2000/SDK/foobar2000_SDK.vcxproj
-index a77e326..58ff5a6 100644
+index a77e326..f962d90 100644
 --- a/submodules/foobar2000/SDK/foobar2000_SDK.vcxproj
 +++ b/submodules/foobar2000/SDK/foobar2000_SDK.vcxproj
+@@ -21,13 +21,13 @@
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+   <ImportGroup Label="ExtensionSettings">
 @@ -41,6 +41,10 @@
    <PropertyGroup Label="UserMacros" />
    <PropertyGroup>
@@ -48,9 +64,25 @@ index a77e326..58ff5a6 100644
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
 diff --git a/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj b/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj
-index 6ea6307..c7e1c3f 100644
+index 6ea6307..0dec955 100644
 --- a/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj
 +++ b/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj
+@@ -21,13 +21,13 @@
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+   <ImportGroup Label="ExtensionSettings">
 @@ -55,8 +55,9 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -77,9 +109,26 @@ index 6ea6307..c7e1c3f 100644
      <ResourceCompile>
        <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
 diff --git a/submodules/foobar2000/helpers/foobar2000_sdk_helpers.vcxproj b/submodules/foobar2000/helpers/foobar2000_sdk_helpers.vcxproj
-index a375e2d..92e63ed 100644
+index a375e2d..e184b05 100644
 --- a/submodules/foobar2000/helpers/foobar2000_sdk_helpers.vcxproj
 +++ b/submodules/foobar2000/helpers/foobar2000_sdk_helpers.vcxproj
+@@ -20,14 +20,14 @@
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+   <ImportGroup Label="ExtensionSettings">
 @@ -54,7 +54,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>

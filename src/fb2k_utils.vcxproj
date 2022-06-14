@@ -19,7 +19,7 @@
   <PropertyGroup Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -50,8 +50,9 @@
     <ClCompile>
       <PreprocessorDefinitions>_WINDOWS;_USRDLL;_SILENCE_CXX20_U8PATH_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir);$(IncludePath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalOptions>/Zm200 /Zc:__cplusplus /Zc:preprocessor /experimental:newLambdaProcessor /Zc:char8_t- %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/Zm200 /Zc:__cplusplus /Zc:char8_t- %(AdditionalOptions)</AdditionalOptions>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <DisableSpecificWarnings>5105</DisableSpecificWarnings>
       <TreatWarningAsError>true</TreatWarningAsError>

@@ -1,8 +1,8 @@
 diff --git a/submodules/pfc/pfc.vcxproj b/submodules/pfc/pfc.vcxproj
-index 3c55758..377be37 100644
+index 3c55758..c1c5215 100644
 --- a/submodules/pfc/pfc.vcxproj
 +++ b/submodules/pfc/pfc.vcxproj
-@@ -37,6 +37,7 @@
+@@ -37,50 +37,51 @@
    <PropertyGroup Label="Globals">
      <ProjectGuid>{EBFFFB4E-261D-44D3-B89C-957B31A0BF9C}</ProjectGuid>
      <RootNamespace>pfc</RootNamespace>
@@ -10,6 +10,58 @@ index 3c55758..377be37 100644
    </PropertyGroup>
    <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release FB2K|Win32'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release FB2K|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug FB2K|Win32'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug FB2K|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
 @@ -113,14 +114,8 @@
    <PropertyGroup Label="UserMacros" />
    <PropertyGroup>

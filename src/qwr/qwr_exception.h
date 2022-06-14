@@ -12,7 +12,7 @@ class QwrException
 public:
     template <typename... Args>
     explicit QwrException( qwr::u8string_view errorMessage, Args&&... errorMessageFmtArgs )
-        : std::runtime_error( fmt::format( errorMessage, std::forward<Args>( errorMessageFmtArgs )... ) )
+        : std::runtime_error( fmt::format( fmt::runtime( errorMessage), std::forward<Args>( errorMessageFmtArgs )... ) )
     {
     }
 
