@@ -146,6 +146,7 @@
     <ClInclude Include="qwr\ui_ddx.h" />
     <ClInclude Include="qwr\ui_ddx_option.h" />
     <ClInclude Include="qwr\unicode.h" />
+    <ClInclude Include="qwr\visitor.h" />
     <ClInclude Include="qwr\winapi_error_helpers.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
