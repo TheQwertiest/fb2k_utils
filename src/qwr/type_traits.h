@@ -16,6 +16,7 @@ inline constexpr bool is_detected = false;
 
 template <template <class...> class Expr, class... Args>
 inline constexpr bool is_detected<Expr, std::void_t<Expr<Args...>>, Args...> = true;
+
 } // namespace detail
 
 template <template <class...> class Expr, class... Args>

@@ -3,6 +3,8 @@
 #include <qwr/ui_ddx.h>
 #include <qwr/ui_option.h>
 
+#include <memory>
+
 namespace qwr::ui
 {
 
@@ -19,6 +21,7 @@ public:
 };
 
 template <template <typename> typename DdxT, typename OptionT>
+requires std::is_base_of_v<IUiOption, OptionT>
 class UiDdxOption final
     : public IUiDdxOption
 {
@@ -29,7 +32,6 @@ public:
         , ddx_( option, std::forward<Args>( args )... )
 
     {
-        static_assert( std::is_base_of_v<IUiOption, OptionT> );
     }
     ~UiDdxOption() override = default;
 

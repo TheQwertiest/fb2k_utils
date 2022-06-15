@@ -138,8 +138,8 @@ public:
         {
             return ( *pPfc_ )[curIdx_];
         }
-        template <typename U = is_pfc_list_const, std::enable_if_t<!U::value, int> = 0>
-        pointer operator->() const
+        
+        pointer operator->() const requires !is_pfc_list_const::value
         {
             return &( **this );
         }
@@ -235,8 +235,8 @@ public:
         {
             return ( const_cast<reference>( const_iterator::operator*() ) );
         }
-        template <typename = typename std::enable_if_t<!is_pfc_list_const::value>>
-        pointer operator->() const
+        
+        pointer operator->() const requires !is_pfc_list_const::value
         {
             return ( const_cast<pointer>( const_iterator::operator->() ) );
         }
@@ -249,12 +249,12 @@ public:
     // typedef std::reverse_iterator<iterator> reverse_iterator;             //optional
     // typedef std::reverse_iterator<const_iterator> const_reverse_iterator; //optional
 
-    template <typename U = T, std::enable_if_t<std::is_reference_v<U>, int> = 0>
-    Stl( T& base )
+    
+    Stl( T& base ) requires std::is_reference_v<T>
         : pfc_( base ){};
 
-    template <typename... Args, typename U = T, std::enable_if_t<!std::is_reference_v<U>, int> = 0>
-    Stl( Args&&... args )
+    template <typename... Args>
+    Stl( Args&&... args ) requires !std::is_reference_v<T>
         : pfc_( std::forward<Args>( args )... ){};
 
     Stl( const Stl& ) = delete;
@@ -269,8 +269,7 @@ public:
     // bool operator<=( const Stl& ) const; //optional
     // bool operator>=( const Stl& ) const; //optional
 
-    template <typename U = T, std::enable_if_t<!std::is_const_v<std::remove_reference_t<U>>, int> = 0>
-    iterator begin()
+    iterator begin() requires !std::is_const_v<std::remove_reference_t<T>>
     {
         return iterator( 0, &pfc_ );
     }
@@ -284,8 +283,7 @@ public:
         return begin();
     }
 
-    template <typename U = T, std::enable_if_t<!std::is_const_v<std::remove_reference_t<U>>, int> = 0>
-    iterator end()
+    iterator end() requires !std::is_const_v<std::remove_reference_t<T>>
     {
         return iterator( size(), &pfc_ );
     }
@@ -409,8 +407,7 @@ public:
     }
 
 public:
-    template <typename U = T, std::enable_if_t<!std::is_const_v<std::remove_reference_t<U>>, int> = 0>
-    pfc_container_type& Pfc()
+    pfc_container_type& Pfc() requires !std::is_const_v<std::remove_reference_t<T>>
     {
         return pfc_;
     }

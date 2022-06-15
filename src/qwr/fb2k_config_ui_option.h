@@ -13,9 +13,8 @@ namespace ui
 {
 
 template <typename T>
-class UiOption<T,
-               std::enable_if_t<
-                   (qwr::is_specialization_of_v<T, fb2k::Config> || qwr::is_specialization_of_v<T, fb2k::Config_MT>)&&!std::is_enum_v<typename T::value_type>>>
+requires ((qwr::is_specialization_of_v<T, fb2k::Config> || qwr::is_specialization_of_v<T, fb2k::Config_MT>) && !std::is_enum_v<typename T::value_type>)
+class UiOption<T>
     : public IUiOption
 {
 public:
@@ -37,10 +36,7 @@ public:
         return *this;
     }
 
-    template <typename U = T,
-              std::enable_if_t<
-                  std::is_convertible_v<typename U::value_type, int> && !std::is_same_v<typename U::value_type, int>, int> = 0>
-    UiOption& operator=( int value )
+    UiOption& operator=( int value ) requires std::is_convertible_v<typename T::value_type, int> && !std::is_same_v<typename T::value_type, int>
     {
         SetValue( static_cast<value_type>( value ) );
         return *this;
@@ -51,10 +47,7 @@ public:
         return GetCurrentValue();
     }
 
-    template <typename U = T,
-              std::enable_if_t<
-                  std::is_convertible_v<typename U::value_type, int> && !std::is_same_v<typename U::value_type, int>, int> = 0>
-    explicit operator int() const
+    explicit operator int() const requires std::is_convertible_v<typename T::value_type, int> && !std::is_same_v<typename T::value_type, int>
     {
         return GetCurrentValue();
     }
@@ -112,9 +105,8 @@ private:
 };
 
 template <typename T>
-class UiOption<T,
-               std::enable_if_t<
-                   (qwr::is_specialization_of_v<T, fb2k::Config> || qwr::is_specialization_of_v<T, fb2k::Config_MT>)&&std::is_enum_v<typename T::value_type>>>
+requires( (qwr::is_specialization_of_v<T, fb2k::Config> || qwr::is_specialization_of_v<T, fb2k::Config_MT>)&&std::is_enum_v<typename T::value_type> )
+class UiOption<T>
     : public IUiOption
 {
 public:

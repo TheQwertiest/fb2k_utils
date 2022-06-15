@@ -21,14 +21,12 @@ public:
 };
 
 template <typename T>
+requires std::is_convertible_v<T, bool> && std::is_assignable_v<T&, bool>
 class UiDdx_CheckBox final
     : public IUiDdx
 {
 public:
     using value_type = typename T;
-
-    static_assert( std::is_convertible_v<T, bool> );
-    static_assert( std::is_assignable_v<T&, bool> );
 
 public:
     UiDdx_CheckBox( T& value, int controlId )
@@ -74,14 +72,12 @@ private:
 };
 
 template <typename T>
+requires std::is_convertible_v<T, qwr::u8string> && std::is_assignable_v<T&, qwr::u8string>
 class UiDdx_TextEdit final
     : public IUiDdx
 {
 public:
     using value_type = typename T;
-
-    static_assert( std::is_convertible_v<T, qwr::u8string> );
-    static_assert( std::is_assignable_v<T&, qwr::u8string> );
 
 public:
     UiDdx_TextEdit( T& value, int controlId )
@@ -138,14 +134,12 @@ private:
 };
 
 template <typename T>
+requires std::is_convertible_v<T, int> && std::is_assignable_v<T&, int>
 class UiDdx_TextEditNum final
     : public IUiDdx
 {
 public:
     using value_type = typename T;
-
-    static_assert( std::is_convertible_v<T, int> );
-    static_assert( std::is_assignable_v<T&, int> );
 
 public:
     UiDdx_TextEditNum( T& value, int controlId )
@@ -196,14 +190,12 @@ private:
 };
 
 template <typename T>
+requires std::is_convertible_v<T, int> && std::is_assignable_v<T&, int>
 class UiDdx_RadioRange final
     : public IUiDdx
 {
 public:
     using value_type = typename T;
-
-    static_assert( std::is_convertible_v<T, int> );
-    static_assert( std::is_assignable_v<T&, int> );
 
 public:
     UiDdx_RadioRange( T& value, std::span<const int> controlIdList )
@@ -259,14 +251,12 @@ private:
 };
 
 template <typename ListT, typename T>
+requires std::is_convertible_v<T, int> && std::is_assignable_v<T&, int>
 class UiDdx_ListBase final
     : public IUiDdx
 {
 public:
     using value_type = typename T;
-
-    static_assert( std::is_convertible_v<T, int> );
-    static_assert( std::is_assignable_v<T&, int> );
 
 public:
     UiDdx_ListBase( T& value, int controlId )
@@ -318,14 +308,12 @@ template <typename T>
 using UiDdx_ListBox = UiDdx_ListBase<CListBox, T>;
 
 template <typename T>
+requires std::is_convertible_v<T, int> && std::is_assignable_v<T&, int>
 class UiDdx_TrackBar final
     : public IUiDdx
 {
 public:
     using value_type = typename T;
-
-    static_assert( std::is_convertible_v<T, int> );
-    static_assert( std::is_assignable_v<T&, int> );
 
 public:
     UiDdx_TrackBar( T& value, int controlId )

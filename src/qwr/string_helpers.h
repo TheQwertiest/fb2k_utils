@@ -46,10 +46,9 @@ std::vector<std::basic_string_view<T>> Split( std::basic_string_view<T> str, T s
 }
 
 template <typename T, typename ContT>
-std::basic_string<T> Join( const ContT& cont, T ch )
+std::basic_string<T> Join( const ContT& cont, T ch ) requires
+    std::is_same_v<typename ContT::value_type, std::basic_string<T>> || std::is_same_v<typename ContT::value_type, std::basic_string_view<T>> || std::is_same_v<typename ContT::value_type, const T*>
 {
-    static_assert( std::is_same_v<typename ContT::value_type, std::basic_string<T>> || std::is_same_v<typename ContT::value_type, std::basic_string_view<T>> || std::is_same_v<typename ContT::value_type, const T*> );
-
     using string_t = std::basic_string<T>;
 
     string_t words_str;

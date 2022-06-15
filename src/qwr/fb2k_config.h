@@ -13,8 +13,8 @@ class Config
 public:
     using value_type = typename InnerT;
 
-    template <typename ArgT, std::enable_if_t<std::is_convertible_v<ArgT, InnerT>, int> = 0>
-    Config( const GUID& guid, const ArgT& defaultValue )
+    template <typename ArgT>
+    Config( const GUID& guid, const ArgT& defaultValue ) requires std::is_convertible_v<ArgT, InnerT>
         : config_( guid, defaultValue )
         , defaultValue_( defaultValue )
     {
@@ -23,8 +23,8 @@ public:
 
     Config( const Config& ) = delete;
 
-    template <typename ArgT, std::enable_if_t<std::is_convertible_v<ArgT, InnerT>, int> = 0>
-    Config& operator=( const ArgT& value )
+    template <typename ArgT>
+    Config& operator=( const ArgT& value ) requires std::is_convertible_v<ArgT, InnerT>
     {
         config_ = value;
         return *this;
@@ -56,7 +56,8 @@ private:
 };
 
 template <typename T, typename EnumType>
-class Config<T, EnumType, std::enable_if_t<std::is_enum_v<EnumType>>>
+requires std::is_enum_v<EnumType>
+class Config<T, EnumType>
 {
     using UnderlyingT = std::underlying_type_t<EnumType>;
 
@@ -72,8 +73,8 @@ public:
 
     Config( const Config& ) = delete;
 
-    template <typename ArgT, std::enable_if_t<std::is_convertible_v<ArgT, EnumType>, int> = 0>
-    Config& operator=( const ArgT& value )
+    template <typename ArgT>
+    Config& operator=( const ArgT& value ) requires std::is_convertible_v<ArgT, EnumType>
     {
         config_ = static_cast<UnderlyingT>( value );
         return *this;
@@ -117,8 +118,8 @@ class Config_MT
 public:
     using value_type = typename Config<T, InnerT>::value_type;
 
-    template <typename ArgT, std::enable_if_t<std::is_convertible_v<ArgT, InnerT>, int> = 0>
-    Config_MT( const GUID& guid, const ArgT& defaultValue )
+    template <typename ArgT>
+    Config_MT( const GUID& guid, const ArgT& defaultValue ) requires std::is_convertible_v<ArgT, InnerT>
         : config_( guid, defaultValue )
     {
     }
@@ -126,8 +127,8 @@ public:
 
     Config_MT( const Config_MT& ) = delete;
 
-    template <typename ArgT, std::enable_if_t<std::is_convertible_v<ArgT, InnerT>, int> = 0>
-    Config_MT& operator=( const ArgT& value )
+    template <typename ArgT>
+    Config_MT& operator=( const ArgT& value ) requires std::is_convertible_v<ArgT, InnerT>
     {
         std::lock_guard lg( mutex_ );
         config_ = value;

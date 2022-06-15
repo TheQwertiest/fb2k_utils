@@ -6,7 +6,7 @@
 namespace qwr::fb2k
 {
 
-template <typename T, typename InnerT, typename = void>
+template <typename T, typename InnerT>
 class AdvConfig
 {
 public:
@@ -40,8 +40,8 @@ public:
         }
     }
 
-    template <typename ArgT, std::enable_if_t<std::is_convertible_v<ArgT, value_type>, int> = 0>
-    AdvConfig& operator=( const ArgT& value )
+    template <typename ArgT>
+    AdvConfig& operator=( const ArgT& value ) requires std::is_convertible_v<ArgT, value_type>
     {
         config_ = value;
         return *this;
@@ -81,8 +81,8 @@ public:
         return config_.GetValue();
     }
 
-    template <typename ArgT, std::enable_if_t<std::is_convertible_v<ArgT, value_type>, int> = 0>
-    AdvConfig_MT& operator=( const ArgT& value )
+    template <typename ArgT>
+    AdvConfig_MT& operator=( const ArgT& value ) requires std::is_convertible_v<ArgT, value_type>
     {
         std::mutex mutex_;
         config_ = value;
