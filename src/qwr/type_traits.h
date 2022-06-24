@@ -28,4 +28,7 @@ inline constexpr bool is_specialization_of_v = false;
 template <template <typename...> class TemplateT, typename... Args>
 inline constexpr bool is_specialization_of_v<TemplateT<Args...>, TemplateT> = true;
 
+template <class T, class... Ts>
+inline constexpr bool is_any_same_v = std::disjunction<std::is_same<T, Ts>...>::value;
+
 } // namespace qwr
