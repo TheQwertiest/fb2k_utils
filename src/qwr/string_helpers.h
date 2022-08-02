@@ -29,20 +29,17 @@ std::basic_string<T> Trim( std::basic_string_view<T> str )
 
 std::vector<qwr::u8string_view> SplitByLines( qwr::u8string_view str );
 
-template <typename T>
-std::vector<std::basic_string_view<T>> Split( std::basic_string_view<T> str, const std::basic_string<T>& separator )
+template <typename T, typename S>
+requires std::is_convertible_v<T, std::string_view> || std::is_convertible_v<T, std::wstring_view>
+auto Split( const T& str, const S& separator )
 {
-    return ranges::views::split( str, separator )
-           | ranges::views::transform( []( auto&& rng ) {
-                 return std::basic_string_view<T>{ &*rng.begin(), static_cast<size_t>( ranges::distance( rng ) ) };
-             } )
-           | ranges::to_vector;
-}
+    using SV = std::conditional_t<std::is_convertible_v<T, std::string_view>, std::string_view, std::wstring_view>;
+    const SV sv{ str };
 
-template <typename T>
-std::vector<std::basic_string_view<T>> Split( std::basic_string_view<T> str, T separator )
-{
-    return Split( str, std::basic_string<T>( 1, separator ) );
+    return ranges::views::split( sv, separator )
+           | ranges::views::transform( []( auto&& rng )
+                                       { return SV{ &*rng.begin(), static_cast<size_t>( ranges::distance( rng ) ) }; } )
+           | ranges::to_vector;
 }
 
 template <typename T, typename ContT>
