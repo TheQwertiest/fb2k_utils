@@ -25,6 +25,7 @@
     </Bscmake>
     <ClCompile>
       <AdditionalIncludeDirectories>$(GeneratedDir);$(IndependentGeneratedDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
