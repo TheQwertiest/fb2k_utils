@@ -75,6 +75,20 @@ std::optional<SemVer> SemVer::ParseString( const std::string& strVer )
     return semVer;
 }
 
+std::string SemVer::ToString() const
+{
+    auto ret = fmt::format( "{}.{}.{}", major, minor, patch );
+    if ( !prerelease.empty() )
+    {
+        ret += fmt::format( "-{}", prerelease );
+    }
+    if ( !metadata.empty() )
+    {
+        ret += fmt::format( "+{}", metadata );
+    }
+    return ret;
+}
+
 bool SemVer::operator==( const SemVer& other ) const
 { // metadata is ignored during comparison
     return ( major == other.major

@@ -15,6 +15,7 @@ public:
     SemVer( const std::string& strVer );
 
     static std::optional<SemVer> ParseString( const std::string& strVer );
+    std::string ToString() const;
 
     bool operator==( const SemVer& other ) const;
     bool operator!=( const SemVer& other ) const;
