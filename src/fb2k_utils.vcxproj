@@ -120,6 +120,7 @@
     <ClInclude Include="qwr\abort_callback.h" />
     <ClInclude Include="qwr\acfu_github.h" />
     <ClInclude Include="qwr\acfu_integration.h" />
+    <ClInclude Include="qwr\enum_bitmask_ops.hpp" />
     <ClInclude Include="qwr\fb2k_adv_config.h" />
     <ClInclude Include="qwr\fb2k_config_ui_option.h" />
     <ClInclude Include="qwr\fb2k_paths.h" />
@@ -146,6 +147,7 @@
     <ClInclude Include="qwr\ui_ddx.h" />
     <ClInclude Include="qwr\ui_ddx_option.h" />
     <ClInclude Include="qwr\unicode.h" />
+    <ClInclude Include="qwr\utility.h" />
     <ClInclude Include="qwr\visitor.h" />
     <ClInclude Include="qwr\winapi_error_helpers.h" />
     <ClInclude Include="stdafx.h" />
