@@ -7,16 +7,8 @@
   </PropertyGroup>
   <PropertyGroup Label="UserMacros">
     <LexillaDirectory>$(SubmodulesDirectory)lexilla\</LexillaDirectory>
-    <LexillaResultDirectory>$(LexillaDirectory)bin\</LexillaResultDirectory>
   </PropertyGroup>
   <PropertyGroup>
     <IncludePath>$(LexillaDirectory)include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
-  <!-- Should not be needed, but MS broke auto-generation of targets -->
-  <ItemDefinitionGroup>
-    <Link>
-      <AdditionalLibraryDirectories>$(LexillaDirectory)bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>      
-      <AdditionalDependencies>liblexilla.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
-  </ItemDefinitionGroup>
 </Project>
