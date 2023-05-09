@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets">
+  </ImportGroup>
+  <PropertyGroup>
+    <_PropertySheetDisplayName>lexilla</_PropertySheetDisplayName>
+  </PropertyGroup>
+  <PropertyGroup Label="UserMacros">
+    <LexillaDirectory>$(SubmodulesDirectory)lexilla\</LexillaDirectory>
+    <LexillaResultDirectory>$(LexillaDirectory)bin\</LexillaResultDirectory>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IncludePath>$(LexillaDirectory)include\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <!-- Should not be needed, but MS broke auto-generation of targets -->
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalLibraryDirectories>$(LexillaDirectory)bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>      
+      <AdditionalDependencies>liblexilla.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>
