@@ -106,11 +106,11 @@ private:
 };
 
 using ConfigString = Config<qwr::pfc_x::cfg_std_string, std::string>;
-using ConfigBool = Config<cfg_bool, bool>;
-using ConfigUint8 = Config<cfg_int_t<uint8_t>, uint8_t>;
-using ConfigUint32 = Config<cfg_int_t<uint32_t>, uint32_t>;
+using ConfigBool = Config<cfg_var_legacy::cfg_bool, bool>;
+using ConfigUint8 = Config<cfg_var_legacy::cfg_int_t<uint8_t>, uint8_t>;
+using ConfigUint32 = Config<cfg_var_legacy::cfg_int_t<uint32_t>, uint32_t>;
 template <typename T>
-using ConfigUint8Enum = Config<cfg_int_t<uint8_t>, T>;
+using ConfigUint8Enum = Config<cfg_var_legacy::cfg_int_t<uint8_t>, T>;
 
 template <typename T, typename InnerT>
 class Config_MT
@@ -163,10 +163,10 @@ private:
 };
 
 using ConfigString_MT = Config_MT<qwr::pfc_x::cfg_std_string, std::string>;
-using ConfigBool_MT = Config_MT<cfg_bool, bool>;
-using ConfigUint8_MT = Config_MT<cfg_int_t<uint8_t>, uint8_t>;
-using ConfigUint32_MT = Config_MT<cfg_int_t<uint32_t>, uint32_t>;
+using ConfigBool_MT = Config_MT<cfg_var_legacy::cfg_bool, bool>;
+using ConfigUint8_MT = Config_MT<cfg_var_legacy::cfg_int_t<uint8_t>, uint8_t>;
+using ConfigUint32_MT = Config_MT<cfg_var_legacy::cfg_int_t<uint32_t>, uint32_t>;
 template <typename T>
-using ConfigUint8Enum_MT = Config_MT<cfg_int_t<uint8_t>, T>;
+using ConfigUint8Enum_MT = Config_MT<cfg_var_legacy::cfg_int_t<uint8_t>, T>;
 
 } // namespace qwr::fb2k

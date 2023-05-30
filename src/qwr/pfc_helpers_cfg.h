@@ -5,7 +5,7 @@
 namespace qwr::pfc_x
 {
 
-class cfg_std_string : public cfg_var
+class cfg_std_string : public cfg_var_legacy::cfg_var
 {
 public:
     cfg_std_string( const GUID& p_guid, qwr::u8string_view p_defaultval );
