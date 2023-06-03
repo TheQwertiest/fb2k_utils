@@ -121,6 +121,7 @@
     <ClInclude Include="qwr\acfu_github.h" />
     <ClInclude Include="qwr\acfu_integration.h" />
     <ClInclude Include="qwr\algorithm.h" />
+    <ClInclude Include="qwr\com_ptr.h" />
     <ClInclude Include="qwr\enum_bitmask_ops.hpp" />
     <ClInclude Include="qwr\fb2k_adv_config.h" />
     <ClInclude Include="qwr\fb2k_config_ui_option.h" />

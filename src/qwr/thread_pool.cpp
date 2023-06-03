@@ -51,16 +51,18 @@ void ThreadPool::Finalize()
 
 void ThreadPool::AddThread()
 {
-    auto& ret = threads_.emplace_back( std::make_unique<std::thread>( [&] { ThreadProc(); } ) );
+    auto& ret = threads_.emplace_back( std::make_unique<std::thread>( [&]
+                                                                      { ThreadProc(); } ) );
     qwr::SetThreadName( *ret, threadName_ );
 }
 
 void ThreadPool::ThreadProc()
 {
+    CoInitializeEx( nullptr, COINIT_MULTITHREADED );
+
     ++idleThreadCount_;
-    const auto idleCounter = qwr::final_action( [&idleThreadsCount = idleThreadCount_]() {
-        --idleThreadsCount;
-    } );
+    const auto idleCounter = qwr::final_action( [&idleThreadsCount = idleThreadCount_]()
+                                                { --idleThreadsCount; } );
 
     while ( true )
     {
@@ -74,7 +76,8 @@ void ThreadPool::ThreadProc()
             std::unique_lock sl( queueMutex_ );
             hasTask_.wait(
                 sl,
-                [&tasks = tasks_, &isExiting = isExiting_] {
+                [&tasks = tasks_, &isExiting = isExiting_]
+                {
                     return ( !tasks.empty() || isExiting );
                 } );
 
@@ -99,6 +102,8 @@ void ThreadPool::ThreadProc()
         }
         ++idleThreadCount_;
     }
+
+    CoUninitialize();
 }
 
 } // namespace qwr
