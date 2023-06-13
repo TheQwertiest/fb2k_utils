@@ -106,7 +106,7 @@
     <ClCompile Include="qwr\semantic_version.cpp" />
     <ClCompile Include="qwr\string_helpers.cpp" />
     <ClCompile Include="qwr\text_helpers.cpp" />
-    <ClCompile Include="qwr\thread_helpers.cpp" />
+    <ClCompile Include="qwr\thread_name_setter.cpp" />
     <ClCompile Include="qwr\thread_pool.cpp" />
     <ClCompile Include="qwr\ui_centered_message_box.cpp" />
     <ClCompile Include="qwr\unicode.cpp" />
@@ -145,7 +145,7 @@
     <ClInclude Include="qwr\semantic_version.h" />
     <ClInclude Include="qwr\string_helpers.h" />
     <ClInclude Include="qwr\text_helpers.h" />
-    <ClInclude Include="qwr\thread_helpers.h" />
+    <ClInclude Include="qwr\thread_name_setter.h" />
     <ClInclude Include="qwr\ui_ddx.h" />
     <ClInclude Include="qwr\ui_ddx_option.h" />
     <ClInclude Include="qwr\unicode.h" />

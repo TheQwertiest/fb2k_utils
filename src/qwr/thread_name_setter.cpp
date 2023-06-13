@@ -1,6 +1,6 @@
 #include <stdafx.h>
 
-#include "thread_helpers.h"
+#include "thread_name_setter.h"
 
 namespace
 {
@@ -19,10 +19,11 @@ struct THREADNAME_INFO
 
 } // namespace
 
-namespace qwr
+namespace
 {
 
-void SetThreadName( std::thread& thread, const std::string& threadName )
+template<typename T>
+void SetThreadNameImpl( T& thread, const std::string& threadName )
 {
     THREADNAME_INFO info{};
     info.dwType = 0x1000;
@@ -37,6 +38,22 @@ void SetThreadName( std::thread& thread, const std::string& threadName )
     __except ( EXCEPTION_EXECUTE_HANDLER )
     {
     }
+}
+
+
+}
+
+namespace qwr
+{
+
+void SetThreadName( std::thread& thread, const std::string& threadName )
+{
+    SetThreadNameImpl( thread, threadName );
+}
+
+void SetThreadName( std::jthread& thread, const std::string& threadName )
+{
+    SetThreadNameImpl( thread, threadName );
 }
 
 } // namespace qwr

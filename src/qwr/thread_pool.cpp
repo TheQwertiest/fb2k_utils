@@ -3,7 +3,7 @@
 #include "thread_pool.h"
 
 #include <qwr/final_action.h>
-#include <qwr/thread_helpers.h>
+#include <qwr/thread_name_setter.h>
 
 namespace qwr
 {
