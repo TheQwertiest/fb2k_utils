@@ -86,7 +86,6 @@ ReflowComments: 'true'
 # clang 15
 # RequiresClausePosition: OwnLine
 SeparateDefinitionBlocks: Always
-SortIncludes: 'false'
 SpaceAfterCStyleCast: 'false'
 SpaceAfterTemplateKeyword : 'true'
 SpaceBeforeAssignmentOperators: 'true'
