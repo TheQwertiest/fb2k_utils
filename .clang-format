@@ -16,6 +16,7 @@ AllowShortLoopsOnASingleLine: 'false'
 AlwaysBreakAfterReturnType: None
 AlwaysBreakTemplateDeclarations: 'true'
 BinPackParameters: 'true'
+BreakAfterAttributes: Leave
 BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeBraces: Custom
 BraceWrapping:
@@ -54,7 +55,7 @@ IncludeCategories:
   - Regex:           '"[[:alnum:]_]+'
     Priority:        1
   # <dependency/header>
-  - Regex:           '^<(acfu-sdk|cpprest|columns_ui-sdk|fmt|foobar2000|js|libspotify|nlohmann|nonstd|range|tim)/'
+  - Regex:           '^<(acfu-sdk|columns_ui-sdk|fmt|foobar2000|nlohmann|nonstd|pfc|qwr|range|tim)/'
     Priority:        4 
   # <dependency_header>
   - Regex:           '^<(atl.*\.h)>'
@@ -71,20 +72,21 @@ IncludeCategories:
 IncludeIsMainRegex: '$'
 IndentCaseLabels: 'false'
 IndentPPDirectives: AfterHash
-# clang 15
-# IndentRequires: 'true'
+IndentRequiresClause: 'true'
 IndentWidth: '4'
 IndentWrappedFunctionNames: 'false'
+InsertNewlineAtEOF: 'true'
 LambdaBodyIndentation: Signature
 Language: Cpp
+LineEnding: CRLF
 MacroBlockBegin: "^BEGIN_*"
 MacroBlockEnd: "^END_*"
 MaxEmptyLinesToKeep: '1'
 PackConstructorInitializers: Never
 PointerAlignment: Left
 ReflowComments: 'true'
-# clang 15
-# RequiresClausePosition: OwnLine
+RequiresClausePosition: OwnLine
+RequiresExpressionIndentation: OuterScope
 SeparateDefinitionBlocks: Always
 SpaceAfterCStyleCast: 'false'
 SpaceAfterTemplateKeyword : 'true'
