@@ -5,6 +5,6 @@
 namespace qwr
 {
 
-void ReportErrorWithPopup( const std::string& title, const std::string& errorText );
+void ReportErrorWithPopup( const std::string& title, const std::string& errorText, bool showPopup = true );
 
 } // namespace qwr
