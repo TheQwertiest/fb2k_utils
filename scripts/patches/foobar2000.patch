@@ -1,9 +1,9 @@
 diff --git a/submodules/foobar2000/SDK/foobar2000-versions.h b/submodules/foobar2000/SDK/foobar2000-versions.h
-index f9c2975..da33d47 100644
+index 3783866..68ba4b7 100644
 --- a/submodules/foobar2000/SDK/foobar2000-versions.h
 +++ b/submodules/foobar2000/SDK/foobar2000-versions.h
-@@ -3,8 +3,8 @@
- // foobar2000 SDK version and target API levels are declared in this header
+@@ -6,8 +6,8 @@
+ // Windows
  
  // This SDK does NOT SUPPORT targets older than API 80 / foobar2000 v1.5
 -#define FOOBAR2000_TARGET_VERSION 80 // 1.5, 1.6
@@ -11,8 +11,8 @@ index f9c2975..da33d47 100644
 +// #define FOOBAR2000_TARGET_VERSION 80 // 1.5, 1.6
 +#define FOOBAR2000_TARGET_VERSION 81 // 2.0
  
+ 
  #ifdef _M_IX86
- #define FOOBAR2000_TARGET_VERSION_COMPATIBLE 72
 diff --git a/submodules/foobar2000/SDK/foobar2000_SDK.vcxproj b/submodules/foobar2000/SDK/foobar2000_SDK.vcxproj
 index 32d25d4..350f20d 100644
 --- a/submodules/foobar2000/SDK/foobar2000_SDK.vcxproj
