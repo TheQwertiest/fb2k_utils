@@ -1,5 +1,7 @@
 #pragma once
 
+#include <qwr/unicode.h>
+
 #include <filesystem>
 #include <stdexcept>
 
