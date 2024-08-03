@@ -29,8 +29,8 @@ index 32d25d4..350f20d 100644
    <PropertyGroup Label="UserMacros" />
    <PropertyGroup>
      <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-+    <OutDir>$(SolutionDir)$(Configuration)\$(ProjectName)\</OutDir>
-+    <IntDir>$(SolutionDir)$(Configuration)\$(ProjectName)\</IntDir>
++    <OutDir>$(SolutionDir)..\_result\$(Platform)_$(Configuration)\deps\$(ProjectName)\</OutDir>
++    <IntDir>$(SolutionDir)..\_result\$(Platform)_$(Configuration)\temp\$(ProjectName)\</IntDir>
    </PropertyGroup>
    <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
      <ClCompile>
@@ -126,8 +126,8 @@ index 255c188..b1145fb 100644
 -    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
 -    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</OutDir>
 -    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
-+    <OutDir>$(SolutionDir)$(Configuration)\$(ProjectName)\</OutDir>
-+    <IntDir>$(SolutionDir)$(Configuration)\$(ProjectName)\</IntDir>
++    <OutDir>$(SolutionDir)..\_result\$(Platform)_$(Configuration)\deps\$(ProjectName)\</OutDir>
++    <IntDir>$(SolutionDir)..\_result\$(Platform)_$(Configuration)\temp\$(ProjectName)\</IntDir>
    </PropertyGroup>
    <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
      <ClCompile>
@@ -219,8 +219,8 @@ index 6086446..cb1681c 100644
    <PropertyGroup Label="UserMacros" />
    <PropertyGroup>
      <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-+    <OutDir>$(SolutionDir)$(Configuration)\$(ProjectName)\</OutDir>
-+    <IntDir>$(SolutionDir)$(Configuration)\$(ProjectName)\</IntDir>
++    <OutDir>$(SolutionDir)..\_result\$(Platform)_$(Configuration)\deps\$(ProjectName)\</OutDir>
++    <IntDir>$(SolutionDir)..\_result\$(Platform)_$(Configuration)\temp\$(ProjectName)\</IntDir>
    </PropertyGroup>
    <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
      <ClCompile>

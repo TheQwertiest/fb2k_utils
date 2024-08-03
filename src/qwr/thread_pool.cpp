@@ -11,7 +11,7 @@ namespace qwr
 ThreadPool::ThreadPool( const std::string& threadName,
                         size_t maxThreadCount )
     : threadName_( threadName )
-    , maxThreadCount_( std::max<size_t>( std::min( std::thread::hardware_concurrency(), maxThreadCount ), 1 ) )
+    , maxThreadCount_( std::max<size_t>( std::min<size_t>( std::thread::hardware_concurrency(), maxThreadCount ), 1 ) )
 {
     threads_.reserve( maxThreadCount_ );
 }

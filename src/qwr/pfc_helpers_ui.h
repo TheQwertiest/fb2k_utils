@@ -20,7 +20,7 @@ std::basic_string<T> uGetWindowText( HWND wnd )
 
     std::wstring text;
     text.resize( size + 1 );
-    (void)::GetWindowText( wnd, text.data(), text.size() );
+    (void)::GetWindowText( wnd, text.data(), static_cast<int>(text.size()) );
     text.resize( wcslen( text.c_str() ) );
 
     if constexpr ( std::is_same_v<T, wchar_t> )

@@ -12,11 +12,11 @@ std::wstring ToWide( qwr::u8string_view src )
         return std::wstring{};
     }
 
-    size_t stringLen = MultiByteToWideChar( CP_UTF8, 0, src.data(), src.size(), nullptr, 0 );
+    size_t stringLen = MultiByteToWideChar( CP_UTF8, 0, src.data(), static_cast<int>(src.size()), nullptr, 0 );
     std::wstring strVal;
     strVal.resize( stringLen );
 
-    stringLen = MultiByteToWideChar( CP_UTF8, 0, src.data(), src.size(), strVal.data(), strVal.size() );
+    stringLen = MultiByteToWideChar( CP_UTF8, 0, src.data(), static_cast<int>(src.size()), strVal.data(), static_cast<int>(strVal.size()) );
     strVal.resize( stringLen );
 
     return strVal;
@@ -34,11 +34,11 @@ std::wstring ToWide_FromAcp( std::string_view src )
         return std::wstring{};
     }
 
-    size_t stringLen = MultiByteToWideChar( CP_ACP, 0, src.data(), src.size(), nullptr, 0 );
+    size_t stringLen = MultiByteToWideChar( CP_ACP, 0, src.data(), static_cast<int>(src.size()), nullptr, 0 );
     std::wstring strVal;
     strVal.resize( stringLen );
 
-    stringLen = MultiByteToWideChar( CP_ACP, 0, src.data(), src.size(), strVal.data(), strVal.size() );
+    stringLen = MultiByteToWideChar( CP_ACP, 0, src.data(), static_cast<int>(src.size()), strVal.data(), static_cast<int>(strVal.size()) );
     strVal.resize( stringLen );
 
     return strVal;
@@ -51,11 +51,11 @@ qwr::u8string ToU8( std::wstring_view src )
         return qwr::u8string{};
     }
 
-    size_t stringLen = WideCharToMultiByte( CP_UTF8, 0, src.data(), src.size(), nullptr, 0, nullptr, nullptr );
+    size_t stringLen = WideCharToMultiByte( CP_UTF8, 0, src.data(), static_cast<int>(src.size()), nullptr, 0, nullptr, nullptr );
     qwr::u8string strVal;
     strVal.resize( stringLen );
 
-    stringLen = WideCharToMultiByte( CP_UTF8, 0, src.data(), src.size(), strVal.data(), strVal.size(), nullptr, nullptr );
+    stringLen = WideCharToMultiByte( CP_UTF8, 0, src.data(), static_cast<int>(src.size()), strVal.data(), static_cast<int>(strVal.size()), nullptr, nullptr );
     strVal.resize( stringLen );
 
     return strVal;

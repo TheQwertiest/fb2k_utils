@@ -8,6 +8,6 @@
   <PropertyGroup Label="UserMacros">
     <PfcName>pfc</PfcName>
     <PfcDirectory>$(SubmodulesDirectory)$(PfcName)\</PfcDirectory>
-    <PfcResultDirectory>$(SolutionDir)$(Configuration) FB2K\$(PfcName)\</PfcResultDirectory>
+    <PfcResultDirectory>$(PlatformConfigurationDir)deps\$(PfcName)\</PfcResultDirectory>
   </PropertyGroup>
 </Project>
