@@ -192,7 +192,7 @@ public:
 
     void ResetToDefault() override
     {
-        SetValue( static_cast<value_type>( config_.GetDefaultValue() ) );
+        SetValue( static_cast<enum_type>( config_.GetDefaultValue() ) );
     }
 
 private:
