@@ -106,6 +106,20 @@ index 32d25d4..350f20d 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
+diff --git a/submodules/foobar2000/SDK/utility.cpp b/submodules/foobar2000/SDK/utility.cpp
+index b930d8f..daeab59 100644
+--- a/submodules/foobar2000/SDK/utility.cpp
++++ b/submodules/foobar2000/SDK/utility.cpp
+@@ -136,8 +136,8 @@ namespace fb2k {
+ 		auto releaseMe = std::make_shared<objRef>();
+ 		*releaseMe = registerTimer(timeAfter, [=] {
+ 			if (releaseMe->is_valid()) {
+-				releaseMe->release();
+ 				func();
++				releaseMe->release();
+ 			}
+ 		});
+ 	}
 diff --git a/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj b/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj
 index 255c188..b1145fb 100644
 --- a/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj
