@@ -1,7 +1,69 @@
 diff --git a/submodules/pfc/pfc.vcxproj b/submodules/pfc/pfc.vcxproj
-index a80a63f..269c857 100644
+index 57cbc91..99d6355 100644
 --- a/submodules/pfc/pfc.vcxproj
 +++ b/submodules/pfc/pfc.vcxproj
+@@ -75,19 +75,19 @@
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release FB2K|Win32'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
+@@ -105,7 +105,7 @@
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release FB2K|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release FB2K|ARM64'" Label="Configuration">
+@@ -122,17 +122,17 @@
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug FB2K|Win32'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
+@@ -147,7 +147,7 @@
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug FB2K|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug FB2K|ARM64'" Label="Configuration">
 @@ -214,7 +214,9 @@
    <PropertyGroup Label="UserMacros" />
    <PropertyGroup>
@@ -93,7 +155,16 @@ index a80a63f..269c857 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
-@@ -450,6 +453,7 @@
+@@ -429,7 +432,7 @@
+       <LanguageStandard>stdcpp17</LanguageStandard>
+       <IntrinsicFunctions>true</IntrinsicFunctions>
+       <ConformanceMode>true</ConformanceMode>
+-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
++      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+     </ClCompile>
+     <ResourceCompile>
+       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+@@ -451,6 +454,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -101,7 +172,7 @@ index a80a63f..269c857 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
-@@ -478,7 +482,7 @@
+@@ -479,7 +483,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -110,7 +181,7 @@ index a80a63f..269c857 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
-@@ -508,7 +512,7 @@
+@@ -509,7 +513,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -119,7 +190,7 @@ index a80a63f..269c857 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
-@@ -538,7 +542,7 @@
+@@ -539,7 +543,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -128,7 +199,7 @@ index a80a63f..269c857 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
-@@ -568,7 +572,7 @@
+@@ -569,7 +573,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -137,7 +208,7 @@ index a80a63f..269c857 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
-@@ -597,7 +601,7 @@
+@@ -598,7 +602,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -146,7 +217,7 @@ index a80a63f..269c857 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
-@@ -626,7 +630,7 @@
+@@ -627,7 +631,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>

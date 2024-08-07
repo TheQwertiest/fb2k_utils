@@ -1,5 +1,5 @@
 diff --git a/submodules/foobar2000/SDK/foobar2000-versions.h b/submodules/foobar2000/SDK/foobar2000-versions.h
-index 3783866..68ba4b7 100644
+index 7fa9322..861e17b 100644
 --- a/submodules/foobar2000/SDK/foobar2000-versions.h
 +++ b/submodules/foobar2000/SDK/foobar2000-versions.h
 @@ -6,8 +6,8 @@
@@ -14,18 +14,43 @@ index 3783866..68ba4b7 100644
  
  #ifdef _M_IX86
 diff --git a/submodules/foobar2000/SDK/foobar2000_SDK.vcxproj b/submodules/foobar2000/SDK/foobar2000_SDK.vcxproj
-index 32d25d4..350f20d 100644
+index a1074e4..a3d38af 100644
 --- a/submodules/foobar2000/SDK/foobar2000_SDK.vcxproj
 +++ b/submodules/foobar2000/SDK/foobar2000_SDK.vcxproj
-@@ -37,6 +37,7 @@
-   <PropertyGroup Label="Globals">
-     <ProjectGuid>{E8091321-D79D-4575-86EF-064EA1A4A20D}</ProjectGuid>
-     <RootNamespace>foobar2000_SDK</RootNamespace>
-+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+@@ -45,14 +45,14 @@
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
    </PropertyGroup>
-   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-@@ -121,6 +122,8 @@
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+@@ -72,13 +72,13 @@
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+@@ -122,6 +122,8 @@
    <PropertyGroup Label="UserMacros" />
    <PropertyGroup>
      <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
@@ -34,7 +59,7 @@ index 32d25d4..350f20d 100644
    </PropertyGroup>
    <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
      <ClCompile>
-@@ -131,7 +134,7 @@
+@@ -132,7 +134,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -43,7 +68,7 @@ index 32d25d4..350f20d 100644
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
        <AdditionalIncludeDirectories>..;..\..</AdditionalIncludeDirectories>
-@@ -155,7 +158,7 @@
+@@ -156,7 +158,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -52,7 +77,7 @@ index 32d25d4..350f20d 100644
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
        <AdditionalIncludeDirectories>..;..\..</AdditionalIncludeDirectories>
-@@ -179,7 +182,7 @@
+@@ -180,7 +182,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -61,7 +86,7 @@ index 32d25d4..350f20d 100644
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
        <AdditionalIncludeDirectories>..;..\..</AdditionalIncludeDirectories>
-@@ -203,7 +206,7 @@
+@@ -204,7 +206,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -70,7 +95,7 @@ index 32d25d4..350f20d 100644
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
        <AdditionalIncludeDirectories>..;..\..</AdditionalIncludeDirectories>
-@@ -230,7 +233,7 @@
+@@ -231,7 +233,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -79,7 +104,7 @@ index 32d25d4..350f20d 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
-@@ -261,7 +264,7 @@
+@@ -262,7 +264,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -88,7 +113,7 @@ index 32d25d4..350f20d 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
-@@ -292,7 +295,7 @@
+@@ -293,7 +295,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -97,7 +122,7 @@ index 32d25d4..350f20d 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
-@@ -323,7 +326,7 @@
+@@ -324,7 +326,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -106,46 +131,44 @@ index 32d25d4..350f20d 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <MultiProcessorCompilation>true</MultiProcessorCompilation>
-diff --git a/submodules/foobar2000/SDK/utility.cpp b/submodules/foobar2000/SDK/utility.cpp
-index b930d8f..daeab59 100644
---- a/submodules/foobar2000/SDK/utility.cpp
-+++ b/submodules/foobar2000/SDK/utility.cpp
-@@ -136,8 +136,8 @@ namespace fb2k {
- 		auto releaseMe = std::make_shared<objRef>();
- 		*releaseMe = registerTimer(timeAfter, [=] {
- 			if (releaseMe->is_valid()) {
--				releaseMe->release();
- 				func();
-+				releaseMe->release();
- 			}
- 		});
- 	}
 diff --git a/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj b/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj
-index 255c188..b1145fb 100644
+index e734472..be2e4b9 100644
 --- a/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj
 +++ b/submodules/foobar2000/foobar2000_component_client/foobar2000_component_client.vcxproj
-@@ -37,6 +37,7 @@
-   <PropertyGroup Label="Globals">
-     <ProjectGuid>{71AD2674-065B-48F5-B8B0-E1F9D3892081}</ProjectGuid>
-     <RootNamespace>foobar2000_component_client</RootNamespace>
-+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+@@ -45,14 +45,14 @@
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
    </PropertyGroup>
-   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-@@ -121,10 +122,8 @@
-   <PropertyGroup Label="UserMacros" />
-   <PropertyGroup>
-     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
--    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</OutDir>
--    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
--    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</OutDir>
--    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
-+    <OutDir>$(SolutionDir)..\_result\$(Platform)_$(Configuration)\deps\$(ProjectName)\</OutDir>
-+    <IntDir>$(SolutionDir)..\_result\$(Platform)_$(Configuration)\temp\$(ProjectName)\</IntDir>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
    </PropertyGroup>
-   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-     <ClCompile>
-@@ -135,7 +134,7 @@
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+@@ -72,13 +72,13 @@
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+@@ -136,7 +136,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -154,7 +177,7 @@ index 255c188..b1145fb 100644
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <AdditionalIncludeDirectories>..;../..</AdditionalIncludeDirectories>
        <ConformanceMode>true</ConformanceMode>
-@@ -158,7 +157,7 @@
+@@ -159,7 +159,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -163,7 +186,7 @@ index 255c188..b1145fb 100644
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <AdditionalIncludeDirectories>..;../..</AdditionalIncludeDirectories>
        <ConformanceMode>true</ConformanceMode>
-@@ -181,7 +180,7 @@
+@@ -182,7 +182,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -172,7 +195,7 @@ index 255c188..b1145fb 100644
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <AdditionalIncludeDirectories>..;../..</AdditionalIncludeDirectories>
        <ConformanceMode>true</ConformanceMode>
-@@ -204,7 +203,7 @@
+@@ -205,7 +205,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -181,7 +204,7 @@ index 255c188..b1145fb 100644
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <AdditionalIncludeDirectories>..;../..</AdditionalIncludeDirectories>
        <ConformanceMode>true</ConformanceMode>
-@@ -228,7 +227,7 @@
+@@ -229,7 +229,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -190,7 +213,7 @@ index 255c188..b1145fb 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <OmitFramePointers>true</OmitFramePointers>
-@@ -255,7 +254,7 @@
+@@ -256,7 +256,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -199,7 +222,7 @@ index 255c188..b1145fb 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <OmitFramePointers>true</OmitFramePointers>
-@@ -282,7 +281,7 @@
+@@ -283,7 +283,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -208,7 +231,7 @@ index 255c188..b1145fb 100644
        <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <OmitFramePointers>true</OmitFramePointers>
-@@ -309,7 +308,7 @@
+@@ -310,7 +310,7 @@
        <WarningLevel>Level3</WarningLevel>
        <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -218,95 +241,218 @@ index 255c188..b1145fb 100644
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
        <OmitFramePointers>true</OmitFramePointers>
 diff --git a/submodules/foobar2000/helpers/foobar2000_sdk_helpers.vcxproj b/submodules/foobar2000/helpers/foobar2000_sdk_helpers.vcxproj
-index 6086446..cb1681c 100644
+index a4d22f3..135e5d2 100644
 --- a/submodules/foobar2000/helpers/foobar2000_sdk_helpers.vcxproj
 +++ b/submodules/foobar2000/helpers/foobar2000_sdk_helpers.vcxproj
-@@ -37,6 +37,7 @@
-   <PropertyGroup Label="Globals">
-     <ProjectGuid>{EE47764E-A202-4F85-A767-ABDAB4AFF35F}</ProjectGuid>
-     <RootNamespace>foobar2000_sdk_helpers</RootNamespace>
-+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+@@ -44,13 +44,13 @@
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
    </PropertyGroup>
-   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+@@ -69,14 +69,14 @@
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <UseOfMfc>false</UseOfMfc>
+     <CharacterSet>Unicode</CharacterSet>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+@@ -135,7 +135,7 @@
+       <WarningLevel>Level3</WarningLevel>
+       <SuppressStartupBanner>true</SuppressStartupBanner>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
++      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
+       <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
+       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
+@@ -165,7 +165,7 @@
+       <WarningLevel>Level3</WarningLevel>
+       <SuppressStartupBanner>true</SuppressStartupBanner>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
++      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
+       <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
+       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
+@@ -195,7 +195,7 @@
+       <WarningLevel>Level3</WarningLevel>
+       <SuppressStartupBanner>true</SuppressStartupBanner>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
++      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
+       <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
+       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
+@@ -225,7 +225,7 @@
+       <WarningLevel>Level3</WarningLevel>
+       <SuppressStartupBanner>true</SuppressStartupBanner>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
++      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
+       <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
+       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
+@@ -252,7 +252,7 @@
+       <WarningLevel>Level3</WarningLevel>
+       <SuppressStartupBanner>true</SuppressStartupBanner>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
++      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
+       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
+       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+@@ -276,7 +276,7 @@
+       <WarningLevel>Level3</WarningLevel>
+       <SuppressStartupBanner>true</SuppressStartupBanner>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
++      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
+       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
+       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+@@ -300,7 +300,7 @@
+       <WarningLevel>Level3</WarningLevel>
+       <SuppressStartupBanner>true</SuppressStartupBanner>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
++      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
+       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
+       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+@@ -324,7 +324,7 @@
+       <WarningLevel>Level3</WarningLevel>
+       <SuppressStartupBanner>true</SuppressStartupBanner>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
++      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
+       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
+       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+diff --git a/submodules/foobar2000/shared/shared.vcxproj b/submodules/foobar2000/shared/shared.vcxproj
+index 4eb6daf..cc319c4 100644
+--- a/submodules/foobar2000/shared/shared.vcxproj
++++ b/submodules/foobar2000/shared/shared.vcxproj
+@@ -45,13 +45,13 @@
+     <ConfigurationType>DynamicLibrary</ConfigurationType>
+     <CharacterSet>Unicode</CharacterSet>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+     <ConfigurationType>DynamicLibrary</ConfigurationType>
+     <CharacterSet>Unicode</CharacterSet>
+     <WholeProgramOptimization>true</WholeProgramOptimization>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
+     <ConfigurationType>DynamicLibrary</ConfigurationType>
+@@ -68,12 +68,12 @@
    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-@@ -121,6 +122,8 @@
-   <PropertyGroup Label="UserMacros" />
-   <PropertyGroup>
-     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-+    <OutDir>$(SolutionDir)..\_result\$(Platform)_$(Configuration)\deps\$(ProjectName)\</OutDir>
-+    <IntDir>$(SolutionDir)..\_result\$(Platform)_$(Configuration)\temp\$(ProjectName)\</IntDir>
+     <ConfigurationType>DynamicLibrary</ConfigurationType>
+     <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
    </PropertyGroup>
-   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-     <ClCompile>
-@@ -134,7 +137,7 @@
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+     <ConfigurationType>DynamicLibrary</ConfigurationType>
+     <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v142</PlatformToolset>
++    <PlatformToolset>v143</PlatformToolset>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
+     <ConfigurationType>DynamicLibrary</ConfigurationType>
+@@ -136,7 +136,7 @@
+       <PrecompiledHeaderFile>shared.h</PrecompiledHeaderFile>
        <WarningLevel>Level3</WarningLevel>
-       <SuppressStartupBanner>true</SuppressStartupBanner>
-       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
--      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
-       <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
-       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
-@@ -164,7 +167,7 @@
-       <WarningLevel>Level3</WarningLevel>
-       <SuppressStartupBanner>true</SuppressStartupBanner>
-       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
--      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
-       <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
-       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
-@@ -194,7 +197,7 @@
-       <WarningLevel>Level3</WarningLevel>
-       <SuppressStartupBanner>true</SuppressStartupBanner>
-       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
--      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
-       <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
-       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
-@@ -224,7 +227,7 @@
-       <WarningLevel>Level3</WarningLevel>
-       <SuppressStartupBanner>true</SuppressStartupBanner>
-       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
--      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
-       <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
-       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
-@@ -251,7 +254,7 @@
-       <WarningLevel>Level3</WarningLevel>
-       <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
 -      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
 +      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
-       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-@@ -275,7 +278,7 @@
+       <FloatingPointModel>Fast</FloatingPointModel>
+       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SHARED_EXPORTS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+@@ -162,7 +162,7 @@
+       <PrecompiledHeaderFile>shared.h</PrecompiledHeaderFile>
        <WarningLevel>Level3</WarningLevel>
-       <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
 -      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
 +      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
-       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-@@ -299,7 +302,7 @@
+       <FloatingPointModel>Fast</FloatingPointModel>
+       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SHARED_EXPORTS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+@@ -187,7 +187,7 @@
+       <PrecompiledHeaderFile>shared.h</PrecompiledHeaderFile>
        <WarningLevel>Level3</WarningLevel>
-       <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
 -      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
 +      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
-       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-@@ -323,7 +326,7 @@
+       <FloatingPointModel>Fast</FloatingPointModel>
+       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SHARED_EXPORTS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+@@ -212,7 +212,7 @@
+       <PrecompiledHeaderFile>shared.h</PrecompiledHeaderFile>
        <WarningLevel>Level3</WarningLevel>
-       <SuppressStartupBanner>true</SuppressStartupBanner>
        <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
 -      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
 +      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-       <AdditionalIncludeDirectories>../..;..</AdditionalIncludeDirectories>
        <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
-       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+       <FloatingPointModel>Fast</FloatingPointModel>
+       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SHARED_EXPORTS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+@@ -240,7 +240,7 @@
+       <PrecompiledHeaderFile>shared.h</PrecompiledHeaderFile>
+       <WarningLevel>Level3</WarningLevel>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
++      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+       <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
+       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
+       <OmitFramePointers>true</OmitFramePointers>
+@@ -274,7 +274,7 @@
+       <PrecompiledHeaderFile>shared.h</PrecompiledHeaderFile>
+       <WarningLevel>Level3</WarningLevel>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
++      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+       <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
+       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
+       <OmitFramePointers>true</OmitFramePointers>
+@@ -307,7 +307,7 @@
+       <PrecompiledHeaderFile>shared.h</PrecompiledHeaderFile>
+       <WarningLevel>Level3</WarningLevel>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
++      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+       <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
+       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
+       <OmitFramePointers>true</OmitFramePointers>
+@@ -340,7 +340,7 @@
+       <PrecompiledHeaderFile>shared.h</PrecompiledHeaderFile>
+       <WarningLevel>Level3</WarningLevel>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
++      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+       <AdditionalOptions>/d2notypeopt %(AdditionalOptions)</AdditionalOptions>
+       <TreatSpecificWarningsAsErrors>4715</TreatSpecificWarningsAsErrors>
+       <OmitFramePointers>true</OmitFramePointers>
