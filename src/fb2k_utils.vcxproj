@@ -96,7 +96,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
   </ItemDefinitionGroup>
-    <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'">
+  <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'">
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
@@ -148,6 +148,7 @@
     <ClInclude Include="qwr\final_action.h" />
     <ClInclude Include="qwr\hook_handler.h" />
     <ClInclude Include="qwr\macros.h" />
+    <ClInclude Include="qwr\not_null.h" />
     <ClInclude Include="qwr\pfc_helpers_cfg.h" />
     <ClInclude Include="qwr\thread_pool.h" />
     <ClInclude Include="qwr\type_traits.h" />
