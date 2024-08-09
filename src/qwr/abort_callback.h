@@ -3,6 +3,7 @@
 #include <atomic>
 #include <mutex>
 #include <unordered_map>
+#include <chrono>
 
 namespace qwr
 {
@@ -30,7 +31,7 @@ private:
 class TimedAbortCallback : public abort_callback
 {
 public:
-    TimedAbortCallback( const qwr::u8string& timeoutLogMessage = {}, uint32_t timeoutSeconds = 5 );
+    TimedAbortCallback( const qwr::u8string& timeoutLogMessage = {}, const std::chrono::seconds& timeout = std::chrono::seconds{ 5 } );
     TimedAbortCallback( const TimedAbortCallback& ) = delete;
     ~TimedAbortCallback();
     TimedAbortCallback& operator=( const TimedAbortCallback& ) = delete;

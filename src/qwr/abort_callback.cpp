@@ -19,7 +19,7 @@ public:
         (void)DeleteTimerQueueEx( hTimerQueue_, INVALID_HANDLE_VALUE );
     }
 
-    HANDLE CreateTimer( WAITORTIMERCALLBACK callback, void* data, uint32_t timeoutSeconds )
+    HANDLE CreateTimer( WAITORTIMERCALLBACK callback, void* data, const std::chrono::milliseconds& timeout )
     {
         HANDLE hTimer = nullptr;
         (void)CreateTimerQueueTimer(
@@ -27,7 +27,7 @@ public:
             hTimerQueue_,
             callback,
             data,
-            timeoutSeconds * 1000,
+            static_cast<DWORD>( timeout.count() ),
             0,
             WT_EXECUTEINTIMERTHREAD | WT_EXECUTEONLYONCE );
         return hTimer;
@@ -58,6 +58,12 @@ GlobalAbortCallback& GlobalAbortCallback::GetInstance()
 void GlobalAbortCallback::AddListener( pfc::event& listener )
 {
     std::scoped_lock sl( listenerMutex_ );
+
+    if ( is_aborting() )
+    {
+        listener.set_state( true );
+        return;
+    }
 
     assert( !listeners_.contains( &listener ) );
     listeners_.emplace( &listener, listener );
@@ -93,9 +99,9 @@ abort_callback_event GlobalAbortCallback::get_abort_event() const
     return abortImpl_.get_abort_event();
 }
 
-TimedAbortCallback::TimedAbortCallback( const qwr::u8string& timeoutLogMessage, uint32_t timeoutSeconds )
+TimedAbortCallback::TimedAbortCallback( const qwr::u8string& timeoutLogMessage, const std::chrono::seconds& timeout )
     : timeoutLogMessage_( timeoutLogMessage )
-    , hTimer_( g_timerManager.CreateTimer( timerProc, this, timeoutSeconds ) )
+    , hTimer_( g_timerManager.CreateTimer( timerProc, this, timeout ) )
 {
     GlobalAbortCallback::GetInstance().AddListener( abortEvent_ );
 }
